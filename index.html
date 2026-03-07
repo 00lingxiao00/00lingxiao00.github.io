@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>00lingxiao00 的新包豪斯博客</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bauhaus: {
+                            bg: '#F4F1EB',      /* 温暖的复古纸张白 */
+                            dark: '#1C1B1A',    /* 极深炭黑，仅用于描边和文字 */
+                            red: '#D9382E',     /* 高纯度包豪斯红 */
+                            blue: '#1B5299',    /* 沉稳包豪斯蓝 */
+                            yellow: '#E5A91A',  /* 明亮包豪斯黄 */
+                            green: '#2A7A5D',   /* 优雅包豪斯绿 */
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', '"Noto Serif SC"', 'serif'],
+                    },
+                    boxShadow: {
+                        /* 核心视觉：强烈的彩色碰撞阴影 */
+                        'hard-dark': '8px 8px 0px 0px #1C1B1A',
+                        'hard-red': '12px 12px 0px 0px #D9382E',
+                        'hard-blue': '12px 12px 0px 0px #1B5299',
+                        'hard-yellow': '12px 12px 0px 0px #E5A91A',
+                        'hard-green': '12px 12px 0px 0px #2A7A5D',
+                        'hard-sm': '4px 4px 0px 0px #1C1B1A',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,600;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        /* 基础排版与波点网格背景（增加图纸质感） */
+        body {
+            font-family: 'Playfair Display', 'Noto Serif SC', serif;
+            background-color: #F4F1EB;
+            /* 建筑图纸波点 */
+            background-image: radial-gradient(rgba(28, 27, 26, 0.1) 1.5px, transparent 1.5px);
+            background-size: 32px 32px;
+            color: #1C1B1A;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* 强调词汇：荧光笔高亮风格 */
+        .highlight-marker {
+            background-color: #E5A91A;
+            color: #1C1B1A;
+            padding: 0.1rem 0.6rem;
+            border: 3px solid #1C1B1A;
+            border-radius: 0.6rem;
+            display: inline-block;
+            font-weight: 900;
+            box-shadow: 4px 4px 0px 0px #1C1B1A;
+            transform: rotate(-1deg);
+        }
+
+        /* 巨型几何图形基础类 */
+        .shape-half-circle { border-radius: 999px 999px 0 0; }
+        .shape-pill { border-radius: 999px; }
+
+        /* 卡片按压交互动画 */
+        .press-effect {
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .press-effect:hover {
+            transform: translate(8px, 8px);
+            box-shadow: 0px 0px 0px 0px transparent !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <nav class="w-full bg-white border-b-[4px] border-bauhaus-dark sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="text-3xl md:text-4xl font-black italic tracking-tighter hover:text-bauhaus-red transition-colors">
+                00lingxiao00.
+            </a>
+            <div class="hidden md:flex space-x-6 font-bold text-lg">
+                <a href="#" class="px-5 py-2 bg-bauhaus-yellow text-bauhaus-dark border-[3px] border-bauhaus-dark rounded-full shadow-hard-sm hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all">首页</a>
+                <a href="#" class="px-5 py-2 bg-white text-bauhaus-dark border-[3px] border-transparent hover:border-bauhaus-dark rounded-full hover:shadow-hard-sm transition-all">归档</a>
+                <a href="#" class="px-5 py-2 bg-white text-bauhaus-dark border-[3px] border-transparent hover:border-bauhaus-dark rounded-full hover:shadow-hard-sm transition-all">关于我</a>
+            </div>
+            <button class="md:hidden w-12 h-12 bg-bauhaus-blue rounded-full border-[3px] border-bauhaus-dark flex flex-col justify-center items-center gap-1 shadow-hard-sm">
+                <span class="w-5 h-1 bg-white border border-bauhaus-dark rounded-full"></span>
+                <span class="w-5 h-1 bg-white border border-bauhaus-dark rounded-full"></span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="max-w-7xl mx-auto px-6 py-20 md:py-32 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="z-10 relative">
+            <div class="inline-block shape-pill bg-bauhaus-red text-white px-6 py-2 border-[4px] border-bauhaus-dark font-black shadow-hard-dark mb-8 transform -rotate-2 text-xl">
+                WELCOME TO MY SPACE
+            </div>
+            <h1 class="text-[4rem] md:text-[6rem] leading-[1.05] font-black text-bauhaus-dark mb-8 tracking-tight">
+                构建逻辑，<br>
+                表达<span class="italic text-bauhaus-blue underline decoration-8 underline-offset-8">审美</span>与态度。
+            </h1>
+            <p class="text-2xl text-bauhaus-dark/90 font-bold border-l-[6px] border-bauhaus-green pl-6 leading-relaxed">
+                这里是 00lingxiao00 的个人博客。<br>
+                记录代码、设计、灵感以及一切 <span class="highlight-marker mt-2">奇思妙想</span>。
+            </p>
+        </div>
+
+        <div class="relative flex justify-center items-center h-[400px] md:h-[500px] w-full z-0 mt-10 lg:mt-0">
+            <div class="absolute right-10 bottom-10 w-[300px] h-[150px] bg-bauhaus-yellow shape-half-circle border-[6px] border-bauhaus-dark border-b-0 shadow-hard-red transform rotate-12"></div>
+            <div class="absolute w-[280px] h-[350px] bg-bauhaus-blue rounded-[3rem] border-[6px] border-bauhaus-dark shadow-hard-yellow flex items-center justify-center p-8 transform -rotate-6 transition-transform hover:rotate-0 duration-300">
+                <span class="text-white text-[8rem] font-black italic drop-shadow-md">00</span>
+            </div>
+            <div class="absolute top-10 left-10 w-24 h-24 bg-bauhaus-green rounded-full border-[4px] border-bauhaus-dark shadow-hard-dark animate-[bounce_4s_infinite]"></div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-12 flex-grow w-full">
+        <div class="flex items-end gap-6 mb-16">
+            <h2 class="text-5xl font-black bg-white inline-block px-8 py-4 border-[4px] border-bauhaus-dark rounded-[2rem] shadow-hard-dark m-0">
+                最新文章
+            </h2>
+            <div class="h-[4px] flex-grow bg-bauhaus-dark mb-6 hidden md:block"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            
+            <article class="bg-white border-[4px] border-bauhaus-dark rounded-[2.5rem] p-8 shadow-hard-red flex flex-col h-full press-effect relative group cursor-pointer">
+                <div class="mb-6 flex justify-between items-center">
+                    <span class="bg-bauhaus-yellow text-bauhaus-dark px-4 py-1 rounded-full border-[3px] border-bauhaus-dark font-black text-sm uppercase">Tech</span>
+                    <span class="font-bold text-bauhaus-dark/50">2026-03-07</span>
+                </div>
+                <h3 class="text-3xl font-black mb-4 leading-snug group-hover:text-bauhaus-red transition-colors">使用 AI Agent 从零部署 GitHub Pages 静态博客</h3>
+                <p class="text-lg font-bold text-bauhaus-dark/70 mb-8 flex-grow leading-relaxed">
+                    无需配置复杂的 Node.js 环境，用自然语言指挥 AI，一步搞定纯前端页面的托管与上线流程。
+                </p>
+                <div class="mt-auto pt-6 border-t-[4px] border-bauhaus-dark flex items-center justify-between">
+                    <span class="font-black text-xl italic">Read More</span>
+                    <div class="w-10 h-10 bg-bauhaus-red rounded-full border-[3px] border-bauhaus-dark flex items-center justify-center group-hover:bg-bauhaus-yellow transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1C1B1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            </article>
+
+            <article class="bg-white border-[4px] border-bauhaus-dark rounded-[2.5rem] p-8 shadow-hard-blue flex flex-col h-full press-effect relative group cursor-pointer">
+                <div class="mb-6 flex justify-between items-center">
+                    <span class="bg-bauhaus-green text-white px-4 py-1 rounded-full border-[3px] border-bauhaus-dark font-black text-sm uppercase">Design</span>
+                    <span class="font-bold text-bauhaus-dark/50">2026-02-28</span>
+                </div>
+                <h3 class="text-3xl font-black mb-4 leading-snug group-hover:text-bauhaus-blue transition-colors">新包豪斯风格在现代网页设计中的复兴</h3>
+                <p class="text-lg font-bold text-bauhaus-dark/70 mb-8 flex-grow leading-relaxed">
+                    抛弃无聊的极简主义与毛玻璃特效，用强烈的彩色实体阴影和复古几何图形构建极具张力的视觉表达。
+                </p>
+                <div class="mt-auto pt-6 border-t-[4px] border-bauhaus-dark flex items-center justify-between">
+                    <span class="font-black text-xl italic">Read More</span>
+                    <div class="w-10 h-10 bg-bauhaus-blue rounded-full border-[3px] border-bauhaus-dark flex items-center justify-center group-hover:bg-bauhaus-yellow transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            </article>
+
+            <article class="bg-bauhaus-blue border-[4px] border-bauhaus-dark rounded-[2.5rem] p-8 shadow-hard-yellow flex flex-col h-full press-effect relative group cursor-pointer text-white">
+                <div class="mb-6 flex justify-between items-center">
+                    <span class="bg-bauhaus-red text-white px-4 py-1 rounded-full border-[3px] border-bauhaus-dark font-black text-sm uppercase">Life</span>
+                    <span class="font-bold text-white/60">2026-01-15</span>
+                </div>
+                <h3 class="text-3xl font-black mb-4 leading-snug">为什么我们需要建立自己的数字花园？</h3>
+                <p class="text-lg font-bold text-white/80 mb-8 flex-grow leading-relaxed">
+                    在算法推荐和信息碎片的时代，拥有一个完全属于自己的域名和代码空间，是保持独立思考的最后防线。
+                </p>
+                <div class="mt-auto pt-6 border-t-[4px] border-bauhaus-dark flex items-center justify-between">
+                    <span class="font-black text-xl italic">Read More</span>
+                    <div class="w-10 h-10 bg-bauhaus-yellow rounded-full border-[3px] border-bauhaus-dark flex items-center justify-center group-hover:bg-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1C1B1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer class="mt-20 border-t-[6px] border-bauhaus-dark bg-white overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row justify-between items-center z-10 relative">
+            <div class="mb-8 md:mb-0">
+                <p class="text-3xl font-black italic mb-2">00lingxiao00.</p>
+                <p class="text-lg font-bold text-bauhaus-dark/60">Designed with AI & Tailwind CSS</p>
+            </div>
+            <div class="flex gap-4">
+                <a href="https://github.com/00lingxiao00/00lingxiao00.github.io" target="_blank" class="px-6 py-3 bg-bauhaus-dark text-white rounded-full font-black border-[3px] border-bauhaus-dark hover:bg-bauhaus-red transition-colors shadow-hard-sm">
+                    View on GitHub
+                </a>
+            </div>
+        </div>
+        <div class="flex h-4 w-full">
+            <div class="w-1/4 bg-bauhaus-red"></div>
+            <div class="w-1/4 bg-bauhaus-yellow"></div>
+            <div class="w-1/4 bg-bauhaus-blue"></div>
+            <div class="w-1/4 bg-bauhaus-green"></div>
+        </div>
+    </footer>
+
+</body>
+</html>
