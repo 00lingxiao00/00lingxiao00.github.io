@@ -11,6 +11,7 @@
             --bg-color: #F4F2EC; 
             --text-main: #1A1A1A; 
             --text-muted: #4A4A4A;
+            --accent-color: #7CA1CC; /* 取自你首页蓝卡的知性蓝 */
             --font-serif: 'Playfair Display', Georgia, serif;
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
@@ -19,13 +20,29 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: var(--font-sans);
-            line-height: 1.8; /* 为长阅读增加行高 */
             margin: 0; 
             padding: 0;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 极简顶部导航，方便读者点 Logo 回首页 */
+        /* 顶部细线阅读进度条 */
+        #progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1000;
+        }
+        #progress-bar {
+            height: 100%;
+            background: var(--text-main);
+            width: 0%;
+            transition: width 0.1s ease-out;
+        }
+
+        /* 顶部导航 */
         .navbar {
             display: flex; 
             justify-content: space-between; 
@@ -41,73 +58,224 @@
             letter-spacing: 1px;
             text-decoration: none;
             color: var(--text-main);
+            transition: opacity 0.2s;
+        }
+        .logo:hover { opacity: 0.6; }
+
+        /* 引入侧边栏的网格布局 */
+        .page-wrapper {
+            max-width: 1200px; /* 拉宽一点以容纳右侧目录 */
+            margin: 2rem auto 8rem auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 1fr 280px; /* 左侧正文，右侧目录宽280px */
+            gap: 4rem;
+            align-items: start;
         }
 
-        /* 核心阅读区排版 */
         .article-container {
-            max-width: 720px; /* 沉浸式阅读的黄金宽度 */
-            margin: 3rem auto 8rem auto;
-            padding: 0 5%;
+            max-width: 760px; /* 限制正文最宽尺寸，符合人眼黄金阅读视距 */
         }
 
         .article-title {
             font-family: var(--font-serif);
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
             line-height: 1.2;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             letter-spacing: -0.02em;
         }
-
-        /* Markdown 生成内容的排版优化 */
-        .article-content h1, .article-content h2, .article-content h3 {
-            font-family: var(--font-serif);
-            margin-top: 3rem;
-            margin-bottom: 1.2rem;
-            line-height: 1.3;
+        /* 标题下方的点睛装饰线 */
+        .article-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin-top: 1.5rem;
+            border-radius: 2px;
         }
-        
-        .article-content h2 { font-size: 1.8rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 0.5rem; }
-        .article-content h3 { font-size: 1.4rem; color: var(--text-muted); }
-        
+
+        /* ==================== 
+           核心排版更新区
+           ==================== */
         .article-content p {
-            margin-bottom: 1.5rem;
-            color: #2A2A2A;
+            text-align: justify; /* 两端对齐 */
+            text-justify: inter-ideograph; /* 针对中文字符的对齐优化 */
+            text-indent: 2em; /* 首行缩进两个中文字符 */
+            margin-bottom: 1.8rem;
+            color: #262626;
             font-size: 1.05rem;
+            line-height: 1.9; /* 稍微拉大行高，更透气 */
         }
 
+        /* 块引用：消除缩进，增加背景色打破单调 */
         .article-content blockquote {
-            border-left: 3px solid var(--text-main);
-            padding: 1rem 0 1rem 1.5rem;
-            margin: 2rem 0;
+            border-left: 4px solid var(--accent-color);
+            padding: 1.2rem 1.5rem 1.2rem 1.5rem;
+            margin: 2.5rem 0;
             color: var(--text-muted);
-            font-style: italic;
-            background: rgba(0,0,0,0.02);
+            background: #EBE8E0; /* 微微加深的背景色，区分正文 */
+            border-radius: 0 8px 8px 0;
+        }
+        .article-content blockquote p {
+            text-indent: 0; /* 引用块通常不加缩进更好看 */
+            margin-bottom: 0;
+            font-size: 1rem;
         }
 
-        .article-content a { color: #7CA1CC; text-decoration: none; border-bottom: 1px solid #7CA1CC; }
-        .article-content a:hover { opacity: 0.8; }
+        /* 标题优化，留出锚点跳转的空间 */
+        .article-content h2, .article-content h3 {
+            font-family: var(--font-serif);
+            margin-top: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            scroll-margin-top: 80px; /* 点击目录跳转时，标题不会紧贴浏览器顶部 */
+        }
         
-        /* 脚注样式优化 */
-        .footnotes {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            font-size: 0.9rem;
+        .article-content h2 { 
+            font-size: 1.7rem; 
+            border-bottom: 1px solid rgba(0,0,0,0.08); 
+            padding-bottom: 0.8rem; 
+        }
+        .article-content h3 { font-size: 1.3rem; color: var(--text-muted); }
+        
+        .article-content a { color: var(--accent-color); text-decoration: none; border-bottom: 1px solid rgba(124,161,204,0.4); }
+        .article-content a:hover { border-bottom: 1px solid var(--accent-color); }
+
+        /* ==================== 
+           右侧悬浮目录 (TOC) 
+           ==================== */
+        .toc-container {
+            position: sticky;
+            top: 4rem; /* 随着往下划，固定在距离顶部4rem的位置 */
+            padding-left: 1.5rem;
+            border-left: 1px solid rgba(0,0,0,0.08);
+            font-size: 0.95rem;
+            max-height: calc(100vh - 8rem);
+            overflow-y: auto;
+        }
+        .toc-title {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            font-size: 0.8rem;
+        }
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .toc-list li { margin-bottom: 0.8rem; }
+        .toc-list a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.2s, font-weight 0.2s;
+            display: block;
+            line-height: 1.4;
+            border-bottom: none;
+        }
+        /* 当前阅读位置的高亮样式 */
+        .toc-list a:hover, .toc-list a.active {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        /* 针对 h3 标题缩进 */
+        .toc-level-3 {
+            padding-left: 1rem;
+            font-size: 0.85rem;
+        }
+
+        /* 响应式：在手机和 iPad 竖屏上，把目录移到文章开头 */
+        @media (max-width: 992px) {
+            .page-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+            .toc-container {
+                position: static;
+                border-left: none;
+                padding-left: 0;
+                background: #EBE8E0;
+                padding: 1.5rem;
+                border-radius: 12px;
+                margin-bottom: 2rem;
+                max-height: none;
+            }
         }
     </style>
 </head>
 <body>
+    <div id="progress-container"><div id="progress-bar"></div></div>
+
     <nav class="navbar">
         <a href="/" class="logo">00LINGXIAO00</a>
     </nav>
 
-    <main class="article-container">
-        <h1 class="article-title">{{ page.title }}</h1>
-        
-        <article class="article-content">
-            {{ content }}
+    <main class="page-wrapper">
+        <article class="article-container">
+            <h1 class="article-title">{{ page.title }}</h1>
+            <div class="article-content" id="article-content">
+                {{ content }}
+            </div>
         </article>
+
+        <aside class="toc-container">
+            <div class="toc-title">Table of Contents</div>
+            <ul class="toc-list" id="toc-list"></ul>
+        </aside>
     </main>
+
+    <script>
+        // 1. 阅读进度条逻辑
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + '%';
+        });
+
+        // 2. 自动抓取标题生成目录
+        document.addEventListener('DOMContentLoaded', () => {
+            const content = document.getElementById('article-content');
+            const headings = content.querySelectorAll('h2, h3');
+            const tocList = document.getElementById('toc-list');
+            
+            if(headings.length === 0) {
+                document.querySelector('.toc-container').style.display = 'none';
+                return;
+            }
+
+            headings.forEach((heading, index) => {
+                const id = 'heading-' + index;
+                heading.id = id;
+
+                const li = document.createElement('li');
+                if(heading.tagName.toLowerCase() === 'h3') {
+                    li.classList.add('toc-level-3');
+                }
+                
+                const a = document.createElement('a');
+                a.href = '#' + id;
+                a.textContent = heading.textContent;
+                
+                li.appendChild(a);
+                tocList.appendChild(li);
+            });
+
+            // 3. 滚动时自动高亮当前目录项
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        document.querySelectorAll('.toc-list a').forEach(a => a.classList.remove('active'));
+                        const currentLink = document.querySelector(`.toc-list a[href="#${id}"]`);
+                        if(currentLink) currentLink.classList.add('active');
+                    }
+                });
+            }, { rootMargin: '-20% 0px -75% 0px' }); 
+
+            headings.forEach(heading => observer.observe(heading));
+        });
+    </script>
 </body>
 </html>
