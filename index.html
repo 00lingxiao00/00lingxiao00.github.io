@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Slyness of the Sine Wave</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #F4F2EC; 
+            /* 设定初始变量，实际背景色由下方的 JS 动态接管控制 */
             --text-main: #1A1A1A; 
-            --text-muted: #666666;
-            --accent-color: #7CA1CC;
-            --border-color: rgba(0,0,0,0.08);
+            --accent-orange: #DF8B6E; 
+            --border-light: rgba(0,0,0,0.06);
+            --border-dark: rgba(0,0,0,0.8);
             --font-serif: 'Playfair Display', Georgia, serif;
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
@@ -19,133 +19,215 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background-color: var(--bg-color);
+            /* 初始颜色，会被 JS 覆盖以实现平滑过渡 */
+            background-color: rgb(244, 242, 236);
             color: var(--text-main);
             font-family: var(--font-sans);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            /* 背景色过渡交由滚动条实时运算，不需要 css transition 延迟 */
         }
 
         /* 导航栏 */
         .navbar {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 2rem 5%; max-width: 1400px; margin: 0 auto;
+            position: relative;
+            z-index: 10;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            padding: 2rem 5%; 
+            max-width: 1400px; 
+            margin: 0 auto;
         }
         .logo {
-            font-family: var(--font-sans); font-weight: 700; font-size: 1.1rem;
-            letter-spacing: 0.5px; text-transform: uppercase;
+            font-family: var(--font-sans); 
+            font-weight: 600; 
+            font-size: 0.9rem;
+            letter-spacing: 1px; 
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-main);
         }
-        .nav-links { display: flex; gap: 2rem; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.95rem; font-weight: 500; }
+        .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: rgba(26, 26, 26, 0.5); 
+            font-size: 0.85rem; 
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease; 
+        }
+        .nav-links a:hover { color: var(--accent-orange); }
 
-        /* Hero 区域 */
-        .hero { padding: 5rem 5% 2rem 5%; max-width: 1200px; margin: 0 auto; }
+        /* ==================== 
+           上半部分：巨幅文字 + 数学级别的有序错落波浪
+           ==================== */
+        .hero { 
+            position: relative;
+            padding: 7rem 5% 9rem 5%; 
+            max-width: 1400px; 
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg-canvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120vw; 
+            height: 100%;
+            z-index: 0;
+            opacity: 0.18; 
+            pointer-events: none;
+            color: var(--accent-orange);
+            overflow: hidden;
+        }
+        .hero-bg-canvas svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 动画平移：完美平移一个完整的波长 (200px)，保证首尾相接无缝循环 */
+        @keyframes drift {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-200px); }
+        }
+
+        /* 不同的周期速度，制造完美的相交与分离 */
+        .wave1 { animation: drift 20s linear infinite; }
+        .wave2 { animation: drift 28s linear infinite; }
+        .wave3 { animation: drift 36s linear infinite; }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+        }
+
         .hero h1 {
             font-family: var(--font-serif);
-            font-size: clamp(2.5rem, 4vw, 4rem);
-            line-height: 1.15;
+            font-size: clamp(3.5rem, 6vw, 5.5rem);
+            font-weight: 500;
+            line-height: 1.1;
             letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
-            max-width: 800px;
+            margin-bottom: 2rem;
+            color: var(--text-main);
         }
         .hero-subtext {
             font-family: var(--font-sans);
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            line-height: 1.7;
+            font-size: 1.05rem;
+            color: rgba(26, 26, 26, 0.6);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 300;
         }
 
         /* ==================== 
-           全新优雅列表视图 
+           下半部分：克制的数据列表
            ==================== */
-        .list-section { padding: 4rem 5% 8rem 5%; max-width: 1200px; margin: 0 auto; }
+        .list-section { 
+            position: relative;
+            z-index: 2;
+            padding: 0 5% 10rem 5%; 
+            max-width: 1000px; 
+            margin: 0 auto; 
+        }
         
         .list-container {
-            border-top: 2px solid var(--text-main); /* 顶部粗线，致敬学术期刊 */
+            border-top: 1.5px solid var(--border-dark); 
         }
 
-        /* 表头 */
         .list-header {
             display: grid;
-            grid-template-columns: 150px 200px 1fr 40px;
-            padding: 1.2rem 1rem;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-muted);
+            grid-template-columns: 120px 140px 1fr;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.9rem; /* 统一字号 */
+            font-weight: 400;
+            color: rgba(26, 26, 26, 0.35); 
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        /* 每一行文章 */
         .list-row {
             display: grid;
-            grid-template-columns: 150px 200px 1fr 40px;
-            padding: 2rem 1rem;
-            border-bottom: 1px solid var(--border-color);
+            grid-template-columns: 120px 140px 1fr;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-light);
             text-decoration: none;
-            color: var(--text-main);
-            align-items: center;
+            align-items: baseline;
             transition: background-color 0.3s ease;
         }
 
-        /* 悬浮交互魔法：打破单调 */
-        .list-row:hover { background-color: rgba(255, 255, 255, 0.4); }
-        .list-row:hover .col-title { transform: translateX(10px); color: var(--accent-color); }
-        .list-row:hover .col-arrow { opacity: 1; transform: translateX(0); }
+        .list-row:hover { background-color: rgba(0, 0, 0, 0.02); }
+        .list-row:hover .col-title { color: var(--accent-orange); }
 
-        .col-date { font-family: var(--font-sans); font-size: 0.95rem; color: var(--text-muted); }
-        .col-cat { font-family: var(--font-sans); font-size: 0.95rem; font-weight: 500; }
+        /* 完全一致的字体、字号与字重，仅通过透明度区分层级 */
+        .col-date, .col-cat, .col-title { 
+            font-family: var(--font-sans); 
+            font-size: 0.9rem; 
+            font-weight: 400;
+        }
+        
+        .col-date, .col-cat { 
+            color: rgba(26, 26, 26, 0.45); 
+        }
         
         .col-title { 
-            font-family: var(--font-serif); 
-            font-size: 1.35rem; 
-            font-weight: 600; 
+            color: rgba(26, 26, 26, 0.95); 
             line-height: 1.4;
-            transition: transform 0.3s ease, color 0.3s ease;
+            transition: color 0.3s ease;
         }
 
-        /* 右侧隐藏的箭头 */
-        .col-arrow {
-            font-size: 1.5rem;
-            opacity: 0;
-            transform: translateX(-15px);
-            transition: all 0.3s ease;
-            text-align: right;
-            color: var(--accent-color);
-        }
-
-        /* 响应式：手机端将表格折叠成列表 */
         @media (max-width: 768px) {
             .list-header { display: none; }
             .list-row {
                 grid-template-columns: 1fr;
-                gap: 0.5rem;
-                padding: 1.5rem 0;
+                gap: 0.3rem;
+                padding: 1.2rem 0;
             }
-            .col-cat { font-size: 0.8rem; color: var(--accent-color); margin-bottom: 0.2rem; }
-            .col-title { font-size: 1.2rem; }
-            .col-date { font-size: 0.85rem; margin-top: 0.5rem; }
-            .col-arrow { display: none; }
-            .list-row:hover .col-title { transform: none; }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">The Slyness of the Sine Wave</div>
+        <a href="/" class="logo">The Slyness of the Sine Wave</a>
         <div class="nav-links">
             <a href="#">Translations</a>
-            <a href="#">Reading</a>
+            <a href="#">Archive</a>
         </div>
     </nav>
 
     <header class="hero">
-        <h1>Latest Updates</h1>
-        <p class="hero-subtext">
-            社会科学、文化政治经济学与批判理论的翻译与阅读笔记。
-        </p>
+        <div class="hero-bg-canvas">
+            <svg viewBox="0 0 600 100" fill="none" stroke="currentColor" preserveAspectRatio="none">
+                
+                <g class="wave wave1">
+                    <path d="M -200 50 Q -150 15 -100 50 T 0 50 T 100 50 T 200 50 T 300 50 T 400 50 T 500 50 T 600 50 T 700 50" stroke-width="0.8" opacity="0.3" />
+                </g>
+                
+                <g class="wave wave2">
+                    <path d="M -200 50 Q -150 28 -100 50 T 0 50 T 100 50 T 200 50 T 300 50 T 400 50 T 500 50 T 600 50 T 700 50" stroke-width="1.2" opacity="0.15" />
+                </g>
+                
+                <g class="wave wave3">
+                    <path d="M -200 50 Q -150 38 -100 50 T 0 50 T 100 50 T 200 50 T 300 50 T 400 50 T 500 50 T 600 50 T 700 50" stroke-width="0.5" opacity="0.6" />
+                </g>
+
+            </svg>
+        </div>
+
+        <div class="hero-content">
+            <h1>The Slyness of<br>the Sine Wave</h1>
+            <p class="hero-subtext">
+                在学术翻译、文化政治经济学与批判理论的波谷中寻找节奏。这是一个静谧的数字花园与文本抛锚地。
+            </p>
+        </div>
     </header>
 
     <section class="list-section">
@@ -154,24 +236,45 @@
                 <div class="col-date">Date</div>
                 <div class="col-cat">Category</div>
                 <div class="col-title">Title</div>
-                <div class="col-arrow"></div>
             </div>
 
             <a href="/ethnicity-inc/" class="list-row">
-                <div class="col-date">Mar 08, 2026</div>
+                <div class="col-date">2026.03.08</div>
                 <div class="col-cat">Anthropology</div>
                 <div class="col-title">Ethnicity, Inc｜3｜Questions of Theory (译文)</div>
-                <div class="col-arrow">→</div>
             </a>
 
-            <a href="#" class="list-row" style="opacity: 0.6;">
+            <a href="#" class="list-row" style="pointer-events: none;">
                 <div class="col-date">Upcoming</div>
                 <div class="col-cat">Critical Theory</div>
-                <div class="col-title">正在翻译中... (Translation in progress)</div>
-                <div class="col-arrow">→</div>
+                <div class="col-title">The Structural Transformation of the Public Sphere</div>
             </a>
             
+            <a href="#" class="list-row" style="pointer-events: none;">
+                <div class="col-date">Upcoming</div>
+                <div class="col-cat">Essays</div>
+                <div class="col-title">数字游牧：关于算法时代资本异化的断想</div>
+            </a>
         </div>
     </section>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            // 获取当前滚动距离与总可滚动高度
+            const scrollPx = document.documentElement.scrollTop || document.body.scrollTop;
+            const maxScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            // 计算滚动比例 (0 到 1)
+            const scrollRatio = Math.min(scrollPx / (maxScroll || 1), 1);
+            
+            // 顶部颜色 (明亮羊皮纸): rgb(244, 242, 236)  --> #F4F2EC
+            // 底部颜色 (深邃阅读色): rgb(230, 228, 221)  --> 微微加深变暗
+            const r = Math.round(244 - scrollRatio * (244 - 230));
+            const g = Math.round(242 - scrollRatio * (242 - 228));
+            const b = Math.round(236 - scrollRatio * (236 - 221));
+            
+            // 实时应用到 body 背景
+            document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        });
+    </script>
 </body>
 </html>
