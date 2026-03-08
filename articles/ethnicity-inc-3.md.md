@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Ethnicity, Inc｜3｜Questions of Theory
-permalink: /ethnicity-inc/
+title: 基因、商品与法律战：21世纪的族群政治经济学
+permalink: /ethnicity-inc-3/
 ---
 
 让我们在此稍作停顿，提出三组理论观察，每一组对于探索“族群公司”（_Ethnicity, Inc._）都至关重要。第一组关乎文化的本质（nature of culture），可以说，关乎其概念、占有、流通与其商品化（commodification）。我们首先讨论它，因为从原型上看，它被认为处于族群意识（ethnic consciousness）的存在主义核心：族群性（ethnicity）= 文化（cultural）+ 认同（identity），形容词与名词被锁定在不可分割的拥抱中。第二组观察与族群性本身有关，涉及其本体论（ontology）及其在社会科学中被对待的方式；第三组则关乎认同、主体性（subjectivity）与自我（selfhood），尤其是当这些修辞（tropes）在21世纪的民族国家及其日益不安、多形态的自我建构中根深蒂固之时。
