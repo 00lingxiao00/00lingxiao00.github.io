@@ -1,7 +1,7 @@
 ---
-Layout: post
-Title: About
-Permalink: /about/
+layout: post
+title: About
+permalink: /about/
 ---
 
 <img src="/assets/images/avatar.jpg" alt="Avatar" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 3rem auto; display: block; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
