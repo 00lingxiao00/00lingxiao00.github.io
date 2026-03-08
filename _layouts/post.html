@@ -268,6 +268,11 @@
 
         <article class="article-container">
             <h1 class="article-title">{{ page.title }}</h1>
+            {% if page.author %}
+            <div style="font-family: var(--font-sans); font-size: 0.9rem; color: rgba(26,26,26,0.45); margin-top: -1.5rem; margin-bottom: 3.5rem; letter-spacing: 0.5px;">
+                By {{ page.author }}
+            </div>
+            {% endif %}
             <div class="article-content" id="article-content">
                 {{ content }}
             </div>

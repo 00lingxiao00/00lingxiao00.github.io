@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* 设定初始变量，实际背景色由下方的 JS 动态接管控制 */
             --text-main: #1A1A1A; 
             --accent-orange: #DF8B6E; 
             --border-light: rgba(0,0,0,0.06);
@@ -19,178 +18,99 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            /* 初始颜色，会被 JS 覆盖以实现平滑过渡 */
             background-color: rgb(244, 242, 236);
             color: var(--text-main);
             font-family: var(--font-sans);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            /* 背景色过渡交由滚动条实时运算，不需要 css transition 延迟 */
         }
 
-        /* 导航栏 */
+        /* 导航栏与极简搜索框 */
         .navbar {
-            position: relative;
-            z-index: 10;
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            padding: 2rem 5%; 
-            max-width: 1400px; 
-            margin: 0 auto;
+            position: relative; z-index: 10; display: flex; 
+            justify-content: space-between; align-items: center;
+            padding: 2rem 5%; max-width: 1400px; margin: 0 auto;
         }
         .logo {
-            font-family: var(--font-sans); 
-            font-weight: 600; 
-            font-size: 0.9rem;
-            letter-spacing: 1px; 
-            text-transform: uppercase;
-            text-decoration: none;
-            color: var(--text-main);
+            font-family: var(--font-sans); font-weight: 600; font-size: 0.9rem;
+            letter-spacing: 1px; text-transform: uppercase; text-decoration: none; color: var(--text-main);
         }
-        .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
         .nav-links a { 
-            text-decoration: none; 
-            color: rgba(26, 26, 26, 0.5); 
-            font-size: 0.85rem; 
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease; 
+            text-decoration: none; color: rgba(26, 26, 26, 0.5); font-size: 0.85rem; 
+            letter-spacing: 0.5px; transition: color 0.3s ease; 
         }
         .nav-links a:hover { color: var(--accent-orange); }
 
-        /* ==================== 
-           上半部分：巨幅文字 + 数学级别的有序错落波浪
-           ==================== */
+        /* 搜索框美学：平时是一根细线，点击后展开 */
+        .search-input {
+            background: transparent; border: none; border-bottom: 1px solid rgba(26, 26, 26, 0.2);
+            padding: 0.2rem 0; font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-main);
+            width: 100px; transition: width 0.4s ease, border-color 0.4s ease;
+        }
+        .search-input:focus { outline: none; border-bottom: 1px solid var(--accent-orange); width: 160px; }
+        .search-input::placeholder { color: rgba(26,26,26,0.3); font-style: italic; }
+
+        /* 巨幅文字与波浪 */
         .hero { 
-            position: relative;
-            padding: 7rem 5% 9rem 5%; 
-            max-width: 1400px; 
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative; padding: 7rem 5% 9rem 5%; max-width: 1400px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: center;
         }
-
         .hero-bg-canvas {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 120vw; 
-            height: 100%;
-            z-index: 0;
-            opacity: 0.18; 
-            pointer-events: none;
-            color: var(--accent-orange);
-            overflow: hidden;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 120vw; height: 100%; z-index: 0; opacity: 0.18; pointer-events: none; color: var(--accent-orange); overflow: hidden;
         }
-        .hero-bg-canvas svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* 动画平移：完美平移一个完整的波长 (200px)，保证首尾相接无缝循环 */
-        @keyframes drift {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-200px); }
-        }
-
-        /* 不同的周期速度，制造完美的相交与分离 */
+        .hero-bg-canvas svg { width: 100%; height: 100%; }
+        @keyframes drift { 0% { transform: translateX(0); } 100% { transform: translateX(-200px); } }
         .wave1 { animation: drift 20s linear infinite; }
         .wave2 { animation: drift 28s linear infinite; }
         .wave3 { animation: drift 36s linear infinite; }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            max-width: 800px;
-        }
-
+        .hero-content { position: relative; z-index: 1; text-align: center; max-width: 800px; }
         .hero h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(3.5rem, 6vw, 5.5rem);
-            font-weight: 500;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin-bottom: 2rem;
-            color: var(--text-main);
+            font-family: var(--font-serif); font-size: clamp(3.5rem, 6vw, 5.5rem); font-weight: 500;
+            line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 2rem; color: var(--text-main);
         }
         .hero-subtext {
-            font-family: var(--font-sans);
-            font-size: 1.05rem;
-            color: rgba(26, 26, 26, 0.6);
-            max-width: 560px;
-            margin: 0 auto;
-            line-height: 1.8;
-            font-weight: 300;
+            font-family: var(--font-sans); font-size: 1.05rem; color: rgba(26, 26, 26, 0.6);
+            max-width: 560px; margin: 0 auto; line-height: 1.8; font-weight: 300;
         }
 
-        /* ==================== 
-           下半部分：克制的数据列表
-           ==================== */
-        .list-section { 
-            position: relative;
-            z-index: 2;
-            padding: 0 5% 10rem 5%; 
-            max-width: 1000px; 
-            margin: 0 auto; 
-        }
+        /* 列表区域与分类标题 */
+        .list-section { position: relative; z-index: 2; padding: 0 5% 10rem 5%; max-width: 1000px; margin: 0 auto; }
         
-        .list-container {
-            border-top: 1.5px solid var(--border-dark); 
+        .section-title {
+            font-family: var(--font-serif); font-size: 1.6rem; font-weight: 500;
+            color: var(--text-main); margin-bottom: 1.5rem; display: flex; align-items: baseline; gap: 1rem;
         }
+        .section-title .cn { font-family: var(--font-sans); font-size: 0.95rem; color: rgba(26,26,26,0.4); font-weight: 400; }
 
+        .list-container { border-top: 1.5px solid var(--border-dark); margin-bottom: 6rem; }
+
+        /* 把原来的 Category 换成了 Author，更符合你的需求 */
         .list-header {
-            display: grid;
-            grid-template-columns: 120px 140px 1fr;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border-light);
-            font-size: 0.9rem; /* 统一字号 */
-            font-weight: 400;
-            color: rgba(26, 26, 26, 0.35); 
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            display: grid; grid-template-columns: 120px 180px 1fr; padding: 1rem 0;
+            border-bottom: 1px solid var(--border-light); font-size: 0.85rem; font-weight: 400;
+            color: rgba(26, 26, 26, 0.35); letter-spacing: 1px; text-transform: uppercase;
         }
-
         .list-row {
-            display: grid;
-            grid-template-columns: 120px 140px 1fr;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--border-light);
-            text-decoration: none;
-            align-items: baseline;
+            display: grid; grid-template-columns: 120px 180px 1fr; padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-light); text-decoration: none; align-items: baseline;
             transition: background-color 0.3s ease;
         }
-
         .list-row:hover { background-color: rgba(0, 0, 0, 0.02); }
         .list-row:hover .col-title { color: var(--accent-orange); }
 
-        /* 完全一致的字体、字号与字重，仅通过透明度区分层级 */
-        .col-date, .col-cat, .col-title { 
-            font-family: var(--font-sans); 
-            font-size: 0.9rem; 
-            font-weight: 400;
-        }
-        
-        .col-date, .col-cat { 
-            color: rgba(26, 26, 26, 0.45); 
-        }
-        
-        .col-title { 
-            color: rgba(26, 26, 26, 0.95); 
-            line-height: 1.4;
-            transition: color 0.3s ease;
-        }
+        .col-date, .col-author, .col-title { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 400; }
+        .col-date, .col-author { color: rgba(26, 26, 26, 0.45); }
+        .col-title { color: rgba(26, 26, 26, 0.95); line-height: 1.4; transition: color 0.3s ease; }
 
         @media (max-width: 768px) {
             .list-header { display: none; }
-            .list-row {
-                grid-template-columns: 1fr;
-                gap: 0.3rem;
-                padding: 1.2rem 0;
-            }
+            .list-row { grid-template-columns: 1fr; gap: 0.3rem; padding: 1.2rem 0; }
+            .search-input { width: 80px; }
+            .search-input:focus { width: 120px; }
         }
     </style>
 </head>
@@ -198,7 +118,7 @@
     <nav class="navbar">
         <a href="/" class="logo">The Slyness of the Sine Wave</a>
         <div class="nav-links">
-            <a href="/">Translations</a>
+            <input type="text" id="search-input" class="search-input" placeholder="Search..." onkeyup="filterPosts()">
             <a href="/about/">About</a>
         </div>
     </nav>
@@ -206,75 +126,90 @@
     <header class="hero">
         <div class="hero-bg-canvas">
             <svg viewBox="0 0 600 100" fill="none" stroke="currentColor" preserveAspectRatio="none">
-                
-                <g class="wave wave1">
-                    <path d="M -200 50 Q -150 15 -100 50 T 0 50 T 100 50 T 200 50 T 300 50 T 400 50 T 500 50 T 600 50 T 700 50" stroke-width="0.8" opacity="0.3" />
-                </g>
-                
-                <g class="wave wave2">
-                    <path d="M -200 50 Q -150 28 -100 50 T 0 50 T 100 50 T 200 50 T 300 50 T 400 50 T 500 50 T 600 50 T 700 50" stroke-width="1.2" opacity="0.15" />
-                </g>
-                
-                <g class="wave wave3">
-                    <path d="M -200 50 Q -150 38 -100 50 T 0 50 T 100 50 T 200 50 T 300 50 T 400 50 T 500 50 T 600 50 T 700 50" stroke-width="0.5" opacity="0.6" />
-                </g>
-
+                <g class="wave wave1"><path d="M -200 50 Q -150 15 -100 50 T 0 50 T 100 50 T 200 50 T 300 50 T 400 50 T 500 50 T 600 50 T 700 50" stroke-width="0.8" opacity="0.3" /></g>
+                <g class="wave wave2"><path d="M -200 50 Q -150 28 -100 50 T 0 50 T 100 50 T 200 50 T 300 50 T 400 50 T 500 50 T 600 50 T 700 50" stroke-width="1.2" opacity="0.15" /></g>
+                <g class="wave wave3"><path d="M -200 50 Q -150 38 -100 50 T 0 50 T 100 50 T 200 50 T 300 50 T 400 50 T 500 50 T 600 50 T 700 50" stroke-width="0.5" opacity="0.6" /></g>
             </svg>
         </div>
-
         <div class="hero-content">
             <h1>The Slyness of<br>the Sine Wave</h1>
-            <p class="hero-subtext">
-                在学术翻译、文化政治经济学与批判理论的波谷中寻找节奏。这是一个静谧的数字花园与文本抛锚地。
-            </p>
+            <p class="hero-subtext">在学术翻译、文化政治经济学与批判理论的波谷中寻找节奏。这是一个静谧的数字花园与文本抛锚地。</p>
         </div>
     </header>
 
     <section class="list-section">
+        <h2 class="section-title">Translations <span class="cn">译作</span></h2>
         <div class="list-container">
             <div class="list-header">
                 <div class="col-date">Date</div>
-                <div class="col-cat">Category</div>
+                <div class="col-author">Author</div>
                 <div class="col-title">Title</div>
             </div>
+            {% for post in site.posts %}
+              {% if post.category == 'translation' %}
+              <a href="{{ post.url }}" class="list-row post-item">
+                  <div class="col-date">{{ post.date | date: "%Y.%m.%d" }}</div>
+                  <div class="col-author">{{ post.author }}</div>
+                  <div class="col-title">{{ post.title }}</div>
+              </a>
+              {% endif %}
+            {% endfor %}
+        </div>
 
-            <a href="/ethnicity-inc-3/" class="list-row">
-                <div class="col-date">2026.03.08</div>
-                <div class="col-cat">Anthropology</div>
-                <div class="col-title">基因、商品与法律战：21世纪的族群政治经济学</div>
-            </a>
-
-            <a href="#" class="list-row" style="pointer-events: none;">
-                <div class="col-date">Upcoming</div>
-                <div class="col-cat">Critical Theory</div>
-                <div class="col-title">The Structural Transformation of the Public Sphere</div>
-            </a>
+        <h2 class="section-title">Original Essays <span class="cn">随笔</span></h2>
+        <div class="list-container">
+            <div class="list-header">
+                <div class="col-date">Date</div>
+                <div class="col-author">Author</div>
+                <div class="col-title">Title</div>
+            </div>
+            {% for post in site.posts %}
+              {% if post.category == 'original' %}
+              <a href="{{ post.url }}" class="list-row post-item">
+                  <div class="col-date">{{ post.date | date: "%Y.%m.%d" }}</div>
+                  <div class="col-author">{{ post.author }}</div>
+                  <div class="col-title">{{ post.title }}</div>
+              </a>
+              {% endif %}
+            {% endfor %}
             
-            <a href="#" class="list-row" style="pointer-events: none;">
+            {% assign original_count = 0 %}
+            {% for post in site.posts %}
+              {% if post.category == 'original' %}{% assign original_count = original_count | plus: 1 %}{% endif %}
+            {% endfor %}
+            {% if original_count == 0 %}
+            <div class="list-row" style="pointer-events: none;">
                 <div class="col-date">Upcoming</div>
-                <div class="col-cat">Essays</div>
-                <div class="col-title">数字游牧：关于算法时代资本异化的断想</div>
-            </a>
+                <div class="col-author">Sinfield</div>
+                <div class="col-title" style="color: rgba(26,26,26,0.3);">暂无内容 / Archive pending...</div>
+            </div>
+            {% endif %}
         </div>
     </section>
 
     <script>
+        // 滚动变色
         window.addEventListener('scroll', () => {
-            // 获取当前滚动距离与总可滚动高度
             const scrollPx = document.documentElement.scrollTop || document.body.scrollTop;
             const maxScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            // 计算滚动比例 (0 到 1)
             const scrollRatio = Math.min(scrollPx / (maxScroll || 1), 1);
-            
-            // 顶部颜色 (明亮羊皮纸): rgb(244, 242, 236)  --> #F4F2EC
-            // 底部颜色 (深邃阅读色): rgb(230, 228, 221)  --> 微微加深变暗
             const r = Math.round(244 - scrollRatio * (244 - 230));
             const g = Math.round(242 - scrollRatio * (242 - 228));
             const b = Math.round(236 - scrollRatio * (236 - 221));
-            
-            // 实时应用到 body 背景
             document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
         });
+
+        // 极速实时搜索：输入文字瞬间过滤列表，无需跳转页面！
+        function filterPosts() {
+            let input = document.getElementById('search-input').value.toLowerCase();
+            let items = document.querySelectorAll('.post-item');
+            items.forEach(item => {
+                // 抓取每一行里包含的所有文字（日期、作者、标题）
+                let text = item.textContent.toLowerCase();
+                // 如果包含搜索词就显示，否则隐藏
+                item.style.display = text.includes(input) ? 'grid' : 'none';
+            });
+        }
     </script>
 </body>
 </html>

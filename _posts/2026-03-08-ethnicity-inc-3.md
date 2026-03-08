@@ -1,6 +1,10 @@
 ---
 layout: post
 title: 基因、商品与法律战：21世纪的族群政治经济学
+author:
+  - Jean Comaroff
+  - John L. Comaroff
+category: translation
 permalink: /ethnicity-inc-3/
 ---
 
