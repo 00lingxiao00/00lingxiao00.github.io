@@ -1,214 +1,331 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-    <title>00lingxiao00 的新包豪斯博客</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        bauhaus: {
-                            bg: '#F4F1EB',      /* 温暖的复古纸张白 */
-                            dark: '#1C1B1A',    /* 极深炭黑，仅用于描边和文字 */
-                            red: '#D9382E',     /* 高纯度包豪斯红 */
-                            blue: '#1B5299',    /* 沉稳包豪斯蓝 */
-                            yellow: '#E5A91A',  /* 明亮包豪斯黄 */
-                            green: '#2A7A5D',   /* 优雅包豪斯绿 */
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['"Playfair Display"', '"Noto Serif SC"', 'serif'],
-                    },
-                    boxShadow: {
-                        /* 核心视觉：强烈的彩色碰撞阴影 */
-                        'hard-dark': '8px 8px 0px 0px #1C1B1A',
-                        'hard-red': '12px 12px 0px 0px #D9382E',
-                        'hard-blue': '12px 12px 0px 0px #1B5299',
-                        'hard-yellow': '12px 12px 0px 0px #E5A91A',
-                        'hard-green': '12px 12px 0px 0px #2A7A5D',
-                        'hard-sm': '4px 4px 0px 0px #1C1B1A',
-                    }
-                }
-            }
-        }
-    </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,600;1,900&display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>00lingxiao00 | 数字花园</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     <style>
-        /* 基础排版与波点网格背景（增加图纸质感） */
+        /* 定义全局变量：Anthropic 核心色板 */
+        :root {
+            --bg-color: #F4F2EC; 
+            --text-main: #1A1A1A; 
+            --text-muted: #4A4A4A;
+            --card-blue: #7CA1CC;
+            --card-pink: #C77D9B;
+            --card-orange: #DF8B6E;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            font-family: 'Playfair Display', 'Noto Serif SC', serif;
-            background-color: #F4F1EB;
-            /* 建筑图纸波点 */
-            background-image: radial-gradient(rgba(28, 27, 26, 0.1) 1.5px, transparent 1.5px);
-            background-size: 32px 32px;
-            color: #1C1B1A;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
-        /* 强调词汇：荧光笔高亮风格 */
-        .highlight-marker {
-            background-color: #E5A91A;
-            color: #1C1B1A;
-            padding: 0.1rem 0.6rem;
-            border: 3px solid #1C1B1A;
-            border-radius: 0.6rem;
-            display: inline-block;
-            font-weight: 900;
-            box-shadow: 4px 4px 0px 0px #1C1B1A;
-            transform: rotate(-1deg);
+        /* 导航栏 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
         }
 
-        /* 巨型几何图形基础类 */
-        .shape-half-circle { border-radius: 999px 999px 0 0; }
-        .shape-pill { border-radius: 999px; }
-
-        /* 卡片按压交互动画 */
-        .press-effect {
-            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            font-weight: 500;
         }
-        .press-effect:hover {
-            transform: translate(8px, 8px);
-            box-shadow: 0px 0px 0px 0px transparent !important;
+
+        .btn-primary {
+            background-color: var(--text-main);
+            color: white !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            transition: opacity 0.2s;
+        }
+        .btn-primary:hover { opacity: 0.8; }
+
+        /* 顶部 Hero 区域 - 调整为左右布局容纳动画 */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            padding: 5rem 5%;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 992px) {
+            .hero {
+                flex-direction: row;
+                align-items: center;
+                gap: 4rem;
+            }
+        }
+
+        .hero-text-content { flex: 1.2; }
+        
+        /* 动画容器 */
+        .hero-visual {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        #hero-canvas {
+            width: 100%;
+            max-width: 400px; /* 控制球体最大尺寸 */
+            aspect-ratio: 1 / 1;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 4.5vw, 4.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        .underline {
+            border-bottom: 4px solid var(--text-main);
+            padding-bottom: 4px;
+        }
+
+        .hero-subtext {
+            font-family: var(--font-serif);
+            font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+            color: var(--text-muted);
+            max-width: 90%;
+        }
+
+        /* 卡片区域 */
+        .card-section {
+            padding: 4rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-bottom: 8rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background-color: transparent;
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 420px; 
+            background: #FAFAFA;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .card:hover { transform: translateY(-5px); }
+
+        .card-color-top {
+            height: 60%;
+            margin: 12px 12px 0 12px;
+            border-radius: 12px;
+        }
+
+        .bg-blue { background-color: var(--card-blue); }
+        .bg-pink { background-color: var(--card-pink); }
+        .bg-orange { background-color: var(--card-orange); }
+
+        .card-content {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+        }
+
+        .card-content h3 {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .card-tag {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
-
-    <nav class="w-full bg-white border-b-[4px] border-bauhaus-dark sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" class="text-3xl md:text-4xl font-black italic tracking-tighter hover:text-bauhaus-red transition-colors">
-                00lingxiao00.
-            </a>
-            <div class="hidden md:flex space-x-6 font-bold text-lg">
-                <a href="#" class="px-5 py-2 bg-bauhaus-yellow text-bauhaus-dark border-[3px] border-bauhaus-dark rounded-full shadow-hard-sm hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all">首页</a>
-                <a href="#" class="px-5 py-2 bg-white text-bauhaus-dark border-[3px] border-transparent hover:border-bauhaus-dark rounded-full hover:shadow-hard-sm transition-all">归档</a>
-                <a href="#" class="px-5 py-2 bg-white text-bauhaus-dark border-[3px] border-transparent hover:border-bauhaus-dark rounded-full hover:shadow-hard-sm transition-all">关于我</a>
-            </div>
-            <button class="md:hidden w-12 h-12 bg-bauhaus-blue rounded-full border-[3px] border-bauhaus-dark flex flex-col justify-center items-center gap-1 shadow-hard-sm">
-                <span class="w-5 h-1 bg-white border border-bauhaus-dark rounded-full"></span>
-                <span class="w-5 h-1 bg-white border border-bauhaus-dark rounded-full"></span>
-            </button>
+<body>
+    <nav class="navbar">
+        <div class="logo">00LINGXIAO00</div>
+        <div class="nav-links">
+            <a href="#">Essays</a>
+            <a href="#">Design</a>
+            <a href="#" class="btn-primary">About</a>
         </div>
     </nav>
 
-    <header class="max-w-7xl mx-auto px-6 py-20 md:py-32 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div class="z-10 relative">
-            <div class="inline-block shape-pill bg-bauhaus-red text-white px-6 py-2 border-[4px] border-bauhaus-dark font-black shadow-hard-dark mb-8 transform -rotate-2 text-xl">
-                WELCOME TO MY SPACE
-            </div>
-            <h1 class="text-[4rem] md:text-[6rem] leading-[1.05] font-black text-bauhaus-dark mb-8 tracking-tight">
-                构建逻辑，<br>
-                表达<span class="italic text-bauhaus-blue underline decoration-8 underline-offset-8">审美</span>与态度。
+    <header class="hero">
+        <div class="hero-text-content">
+            <h1>
+                A <span class="underline">digital space</span> for <br>
+                <span class="underline">thoughts</span>, design, <br>
+                and technology
             </h1>
-            <p class="text-2xl text-bauhaus-dark/90 font-bold border-l-[6px] border-bauhaus-green pl-6 leading-relaxed">
-                这里是 00lingxiao00 的个人博客。<br>
-                记录代码、设计、灵感以及一切 <span class="highlight-marker mt-2">奇思妙想</span>。
+            <p class="hero-subtext">
+                Welcome to my personal blog. This is a quiet place where I document code explorations, share design inspirations, and record the everyday fragments that spark curiosity.
             </p>
         </div>
-
-        <div class="relative flex justify-center items-center h-[400px] md:h-[500px] w-full z-0 mt-10 lg:mt-0">
-            <div class="absolute right-10 bottom-10 w-[300px] h-[150px] bg-bauhaus-yellow shape-half-circle border-[6px] border-bauhaus-dark border-b-0 shadow-hard-red transform rotate-12"></div>
-            <div class="absolute w-[280px] h-[350px] bg-bauhaus-blue rounded-[3rem] border-[6px] border-bauhaus-dark shadow-hard-yellow flex items-center justify-center p-8 transform -rotate-6 transition-transform hover:rotate-0 duration-300">
-                <span class="text-white text-[8rem] font-black italic drop-shadow-md">00</span>
-            </div>
-            <div class="absolute top-10 left-10 w-24 h-24 bg-bauhaus-green rounded-full border-[4px] border-bauhaus-dark shadow-hard-dark animate-[bounce_4s_infinite]"></div>
+        
+        <div class="hero-visual">
+            <div id="hero-canvas"></div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 py-12 flex-grow w-full">
-        <div class="flex items-end gap-6 mb-16">
-            <h2 class="text-5xl font-black bg-white inline-block px-8 py-4 border-[4px] border-bauhaus-dark rounded-[2rem] shadow-hard-dark m-0">
-                最新文章
-            </h2>
-            <div class="h-[4px] flex-grow bg-bauhaus-dark mb-6 hidden md:block"></div>
+    <section class="card-section">
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-color-top bg-blue"></div>
+                <div class="card-content">
+                    <h3>Exploring the Neo-Bauhaus aesthetic</h3>
+                    <div class="card-tag"><span class="icon">📝</span> Design Notes</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-color-top bg-pink"></div>
+                <div class="card-content">
+                    <h3>Deploying static sites via AI Agents</h3>
+                    <div class="card-tag"><span class="icon">💻</span> Tech & Code</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-color-top bg-orange"></div>
+                <div class="card-content">
+                    <h3>Why we still need personal domains</h3>
+                    <div class="card-tag"><span class="icon">☕</span> Life Essay</div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+    <script>
+        (function initDynamicSphere() {
+            const container = document.getElementById('hero-canvas');
+            const ns = "http://www.w3.org/2000/svg";
+            const svg = document.createElementNS(ns, "svg");
+            // 设定视口，确保球体居中且不被裁切
+            svg.setAttribute("viewBox", "-100 -100 200 200");
+            svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+            svg.style.width = "100%";
+            svg.style.height = "100%";
+            container.appendChild(svg);
+
+            // 使用 Anthropic 风格的深墨色，替代原版的高饱和颜色
+            const color = "#1A1A1A"; 
             
-            <article class="bg-white border-[4px] border-bauhaus-dark rounded-[2.5rem] p-8 shadow-hard-red flex flex-col h-full press-effect relative group cursor-pointer">
-                <div class="mb-6 flex justify-between items-center">
-                    <span class="bg-bauhaus-yellow text-bauhaus-dark px-4 py-1 rounded-full border-[3px] border-bauhaus-dark font-black text-sm uppercase">Tech</span>
-                    <span class="font-bold text-bauhaus-dark/50">2026-03-07</span>
-                </div>
-                <h3 class="text-3xl font-black mb-4 leading-snug group-hover:text-bauhaus-red transition-colors">使用 AI Agent 从零部署 GitHub Pages 静态博客</h3>
-                <p class="text-lg font-bold text-bauhaus-dark/70 mb-8 flex-grow leading-relaxed">
-                    无需配置复杂的 Node.js 环境，用自然语言指挥 AI，一步搞定纯前端页面的托管与上线流程。
-                </p>
-                <div class="mt-auto pt-6 border-t-[4px] border-bauhaus-dark flex items-center justify-between">
-                    <span class="font-black text-xl italic">Read More</span>
-                    <div class="w-10 h-10 bg-bauhaus-red rounded-full border-[3px] border-bauhaus-dark flex items-center justify-center group-hover:bg-bauhaus-yellow transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1C1B1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </div>
-                </div>
-            </article>
+            const group = document.createElementNS(ns, "g");
+            svg.appendChild(group);
 
-            <article class="bg-white border-[4px] border-bauhaus-dark rounded-[2.5rem] p-8 shadow-hard-blue flex flex-col h-full press-effect relative group cursor-pointer">
-                <div class="mb-6 flex justify-between items-center">
-                    <span class="bg-bauhaus-green text-white px-4 py-1 rounded-full border-[3px] border-bauhaus-dark font-black text-sm uppercase">Design</span>
-                    <span class="font-bold text-bauhaus-dark/50">2026-02-28</span>
-                </div>
-                <h3 class="text-3xl font-black mb-4 leading-snug group-hover:text-bauhaus-blue transition-colors">新包豪斯风格在现代网页设计中的复兴</h3>
-                <p class="text-lg font-bold text-bauhaus-dark/70 mb-8 flex-grow leading-relaxed">
-                    抛弃无聊的极简主义与毛玻璃特效，用强烈的彩色实体阴影和复古几何图形构建极具张力的视觉表达。
-                </p>
-                <div class="mt-auto pt-6 border-t-[4px] border-bauhaus-dark flex items-center justify-between">
-                    <span class="font-black text-xl italic">Read More</span>
-                    <div class="w-10 h-10 bg-bauhaus-blue rounded-full border-[3px] border-bauhaus-dark flex items-center justify-center group-hover:bg-bauhaus-yellow transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </div>
-                </div>
-            </article>
+            const radius = 80; // 球体半径
+            const latCount = 8;
+            const lonCount = 12;
+            let angleX = 0, angleY = 0;
+            const paths = [];
 
-            <article class="bg-bauhaus-blue border-[4px] border-bauhaus-dark rounded-[2.5rem] p-8 shadow-hard-yellow flex flex-col h-full press-effect relative group cursor-pointer text-white">
-                <div class="mb-6 flex justify-between items-center">
-                    <span class="bg-bauhaus-red text-white px-4 py-1 rounded-full border-[3px] border-bauhaus-dark font-black text-sm uppercase">Life</span>
-                    <span class="font-bold text-white/60">2026-01-15</span>
-                </div>
-                <h3 class="text-3xl font-black mb-4 leading-snug">为什么我们需要建立自己的数字花园？</h3>
-                <p class="text-lg font-bold text-white/80 mb-8 flex-grow leading-relaxed">
-                    在算法推荐和信息碎片的时代，拥有一个完全属于自己的域名和代码空间，是保持独立思考的最后防线。
-                </p>
-                <div class="mt-auto pt-6 border-t-[4px] border-bauhaus-dark flex items-center justify-between">
-                    <span class="font-black text-xl italic">Read More</span>
-                    <div class="w-10 h-10 bg-bauhaus-yellow rounded-full border-[3px] border-bauhaus-dark flex items-center justify-center group-hover:bg-white transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1C1B1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </div>
-                </div>
-            </article>
+            // 生成几何经纬线数据
+            const lines = [];
+            for (let i = 1; i < latCount; i++) {
+                const theta = (Math.PI * i) / latCount;
+                const y = Math.cos(theta) * radius;
+                const r = Math.sin(theta) * radius;
+                const pts = [];
+                for (let j = 0; j <= 50; j++) {
+                    const phi = (2 * Math.PI * j) / 50;
+                    pts.push({x: r * Math.cos(phi), y: y, z: r * Math.sin(phi)});
+                }
+                lines.push(pts);
+            }
+            for (let i = 0; i < lonCount; i++) {
+                const phi = (2 * Math.PI * i) / lonCount;
+                const pts = [];
+                for (let j = 0; j <= 50; j++) {
+                    const theta = (Math.PI * j) / 50;
+                    pts.push({x: radius * Math.sin(theta) * Math.cos(phi), y: radius * Math.cos(theta), z: radius * Math.sin(theta) * Math.sin(phi)});
+                }
+                lines.push(pts);
+            }
 
-        </div>
-    </main>
+            // 初始化 SVG Path 元素
+            lines.forEach(() => {
+                const p = document.createElementNS(ns, "path");
+                p.setAttribute("fill", "none");
+                p.setAttribute("stroke", color);
+                p.setAttribute("stroke-linecap", "round");
+                group.appendChild(p);
+                paths.push(p);
+            });
 
-    <footer class="mt-20 border-t-[6px] border-bauhaus-dark bg-white overflow-hidden relative">
-        <div class="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row justify-between items-center z-10 relative">
-            <div class="mb-8 md:mb-0">
-                <p class="text-3xl font-black italic mb-2">00lingxiao00.</p>
-                <p class="text-lg font-bold text-bauhaus-dark/60">Designed with AI & Tailwind CSS</p>
-            </div>
-            <div class="flex gap-4">
-                <a href="https://github.com/00lingxiao00/00lingxiao00.github.io" target="_blank" class="px-6 py-3 bg-bauhaus-dark text-white rounded-full font-black border-[3px] border-bauhaus-dark hover:bg-bauhaus-red transition-colors shadow-hard-sm">
-                    View on GitHub
-                </a>
-            </div>
-        </div>
-        <div class="flex h-4 w-full">
-            <div class="w-1/4 bg-bauhaus-red"></div>
-            <div class="w-1/4 bg-bauhaus-yellow"></div>
-            <div class="w-1/4 bg-bauhaus-blue"></div>
-            <div class="w-1/4 bg-bauhaus-green"></div>
-        </div>
-    </footer>
+            // 渲染与动画循环
+            function animate() {
+                // 降低转速，使其更具沉稳的学术感
+                angleX += 0.0015;
+                angleY += 0.0025;
 
+                lines.forEach((pts, idx) => {
+                    let d = "";
+                    let totalZ = 0;
+                    pts.forEach((pt, i) => {
+                        let y1 = pt.y*Math.cos(angleX) - pt.z*Math.sin(angleX);
+                        let z1 = pt.y*Math.sin(angleX) + pt.z*Math.cos(angleX);
+                        let x2 = pt.x*Math.cos(angleY) - z1*Math.sin(angleY);
+                        let z2 = pt.x*Math.sin(angleY) + z1*Math.cos(angleY);
+                        
+                        totalZ += z2;
+                        if(i===0) d+=`M ${x2.toFixed(1)} ${y1.toFixed(1)}`;
+                        else d+=` L ${x2.toFixed(1)} ${y1.toFixed(1)}`;
+                    });
+                    
+                    // 基于 Z 轴深度计算透明度和线宽，创造空间感
+                    const avgZ = totalZ / pts.length;
+                    const normZ = (avgZ + radius)/(2*radius);
+                    // 调整透明度映射，最暗处约为 0.05，最亮处约为 0.4，避免颜色过重喧宾夺主
+                    const op = 0.05 + 0.35 * Math.pow(normZ, 2); 
+                    
+                    paths[idx].setAttribute("d", d);
+                    paths[idx].setAttribute("stroke-opacity", op.toFixed(2));
+                    // 线宽保持极细的铅笔素描感
+                    paths[idx].setAttribute("stroke-width", (0.3 + normZ * 0.6).toFixed(2));
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
+    </script>
 </body>
 </html>
