@@ -8,12 +8,10 @@ permalink: /about/
 
 谢谢你找到了这里，也愿意读完——或许没有读完——这些或许有些无关紧要的文字。
 
-我不是相关专业的人员，但我想借助那些久经考验的视角，去打量我们周遭的一切。思考或许不能帮我们改变什么，但它可以让我们在面对那些糖衣包裹的利刃时，说出那句话：
-
-> _"I Would Prefer Not To."_
+我不是相关专业的人员，但我想借助那些久经考验的视角，去打量我们周遭的一切。思考或许不能帮我们改变什么，但它可以让我们在面对那些糖衣包裹的利刃时，说出那句话：I Would Prefer Not To。
 
 ---
-我想献上一首布莱希特的诗歌：
+我想献上几行布莱希特的诗歌：
 
 > 季节，要那暴雨的。  
 > 生活，要那明晰的。  
@@ -24,6 +22,7 @@ permalink: /about/
 
 如果你想联系我，可以通过以下方式找到我：
 
-- **邮箱** · [00lingxiao00@gmail.com](mailto:00lingxiao00@gmail.com)
-- **豆瓣** · [220055998 | Sinfield](https://www.douban.com/people/220055998/)
-- **B 站** · [475770881 | Sinfield_](https://space.bilibili.com/475770881)
+如果你想联系我，可以通过以下方式找到我：
+
+- **邮箱** · <a href="mailto:00lingxiao00@gmail.com">00lingxiao00@gmail.com</a>
+- **豆瓣** · <a href="https://www.douban.com/people/220055998/" target="_blank">220055998 | Sinfield</a>
