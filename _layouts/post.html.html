@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | 00lingxiao00</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <style>
+        /* 继承你首页的 Anthropic 全局变量 */
+        :root {
+            --bg-color: #F4F2EC; 
+            --text-main: #1A1A1A; 
+            --text-muted: #4A4A4A;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.8; /* 为长阅读增加行高 */
+            margin: 0; 
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 极简顶部导航，方便读者点 Logo 回首页 */
+        .navbar {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            padding: 1.5rem 5%; 
+            max-width: 1400px; 
+            margin: 0 auto;
+        }
+        .logo { 
+            font-family: var(--font-sans); 
+            font-weight: 700; 
+            font-size: 1.2rem; 
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        /* 核心阅读区排版 */
+        .article-container {
+            max-width: 720px; /* 沉浸式阅读的黄金宽度 */
+            margin: 3rem auto 8rem auto;
+            padding: 0 5%;
+        }
+
+        .article-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.2;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        /* Markdown 生成内容的排版优化 */
+        .article-content h1, .article-content h2, .article-content h3 {
+            font-family: var(--font-serif);
+            margin-top: 3rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.3;
+        }
+        
+        .article-content h2 { font-size: 1.8rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 0.5rem; }
+        .article-content h3 { font-size: 1.4rem; color: var(--text-muted); }
+        
+        .article-content p {
+            margin-bottom: 1.5rem;
+            color: #2A2A2A;
+            font-size: 1.05rem;
+        }
+
+        .article-content blockquote {
+            border-left: 3px solid var(--text-main);
+            padding: 1rem 0 1rem 1.5rem;
+            margin: 2rem 0;
+            color: var(--text-muted);
+            font-style: italic;
+            background: rgba(0,0,0,0.02);
+        }
+
+        .article-content a { color: #7CA1CC; text-decoration: none; border-bottom: 1px solid #7CA1CC; }
+        .article-content a:hover { opacity: 0.8; }
+        
+        /* 脚注样式优化 */
+        .footnotes {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/" class="logo">00LINGXIAO00</a>
+    </nav>
+
+    <main class="article-container">
+        <h1 class="article-title">{{ page.title }}</h1>
+        
+        <article class="article-content">
+            {{ content }}
+        </article>
+    </main>
+</body>
+</html>
