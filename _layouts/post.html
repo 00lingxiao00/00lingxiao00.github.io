@@ -137,6 +137,17 @@
             padding-bottom: 0.8rem; 
         }
         .article-content h3 { font-size: 1.3rem; color: var(--text-muted); }
+
+        /* 图片自动化排版魔法 */
+        .article-content img {
+            max-width: 100%; /* 无论图片多大，都不会撑爆屏幕 */
+            height: auto; /* 自动保持比例，绝不拉伸变形 */
+            border-radius: 12px; /* 自动切出优雅圆角 */
+            display: block;
+            margin: 3rem auto; /* 上下留白，自动居中 */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06); /* 增加极淡的高级阴影 */
+        }
+
         .article-content a { color: var(--accent-color); text-decoration: none; border-bottom: 1px solid rgba(124,161,204,0.4); }
         .article-content a:hover { border-bottom: 1px solid var(--accent-color); }
 
@@ -242,7 +253,7 @@
     <div id="progress-container"><div id="progress-bar"></div></div>
 
     <nav class="navbar">
-        <a href="/" class="logo">00LINGXIAO00</a>
+        <a href="/" class="logo">The Slyness of the Sine Wave</a>
     </nav>
 
     <main class="page-wrapper">
@@ -274,6 +285,9 @@
             
             if(headings.length === 0) {
                 document.querySelector('.toc-container').style.display = 'none';
+                /* 魔法：如果没有目录，就把网格变成单列，并让文章完美居中 */
+                document.querySelector('.page-wrapper').style.gridTemplateColumns = '1fr';
+                document.querySelector('.article-container').style.margin = '0 auto';
                 return;
             }
 
