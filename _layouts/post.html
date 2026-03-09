@@ -139,6 +139,10 @@
         .article-actions {
             margin-top: -2rem;
             margin-bottom: 2.6rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
         }
         .download-link {
             display: inline-flex;
@@ -157,6 +161,85 @@
             border-color: rgba(0,0,0,0.35);
             color: var(--text-main);
             background: rgba(0,0,0,0.03);
+        }
+        .reading-time {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.45rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            letter-spacing: 0.3px;
+            color: rgba(26,26,26,0.62);
+            background: rgba(0,0,0,0.04);
+        }
+        .share-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+        }
+        .share-label {
+            font-size: 0.78rem;
+            color: rgba(26,26,26,0.5);
+            margin-right: 0.1rem;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2rem;
+            height: 2rem;
+            padding: 0 0.6rem;
+            border-radius: 999px;
+            border: 1px solid rgba(0,0,0,0.14);
+            text-decoration: none;
+            color: rgba(26,26,26,0.72);
+            font-size: 0.75rem;
+            transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+            cursor: pointer;
+            background: transparent;
+            font-family: var(--font-sans);
+        }
+        .share-btn:hover {
+            border-color: rgba(0,0,0,0.3);
+            color: var(--text-main);
+            background: rgba(0,0,0,0.03);
+        }
+        .share-toast {
+            font-size: 0.76rem;
+            color: rgba(26,26,26,0.6);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .share-toast.show { opacity: 1; }
+        .back-to-top {
+            position: fixed;
+            right: 1.2rem;
+            bottom: 1.4rem;
+            width: 2.6rem;
+            height: 2.6rem;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.18);
+            background: rgba(244, 242, 236, 0.92);
+            color: rgba(26,26,26,0.8);
+            font-size: 1.1rem;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease, border-color 0.2s ease;
+            z-index: 1000;
+        }
+        .back-to-top:hover { border-color: rgba(0,0,0,0.34); }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
         /* ==================== 
@@ -380,6 +463,16 @@
                 font-size: 0.8rem;
                 padding: 0.4rem 0.75rem;
             }
+            .reading-time {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.75rem;
+            }
+            .share-btn {
+                min-width: 1.8rem;
+                height: 1.8rem;
+                padding: 0 0.55rem;
+                font-size: 0.72rem;
+            }
             .article-content p {
                 font-size: 1rem;
                 line-height: 1.85;
@@ -442,6 +535,12 @@
                 padding: 0.8rem 0.9rem;
                 font-size: 0.88rem;
             }
+            .back-to-top {
+                right: 0.9rem;
+                bottom: 1rem;
+                width: 2.4rem;
+                height: 2.4rem;
+            }
         }
     </style>
 </head>
@@ -485,18 +584,28 @@
                 {% capture default_download_url %}https://github.com/{{ site.github.repository_nwo }}/raw/{{ site.github.source.branch }}/{{ page.path }}{% endcapture %}
             {% endif %}
             {% assign markdown_download_url = page.download_url | default: default_download_url %}
-            {% if markdown_download_url != '' %}
             <div class="article-actions">
+                <span class="reading-time" id="reading-time">阅读时间计算中...</span>
+                {% if markdown_download_url != '' %}
                 <a class="download-link" href="{{ markdown_download_url }}" download="{{ source_filename }}">
                     下载附件（Markdown）
                 </a>
+                {% endif %}
+                <div class="share-group">
+                    <span class="share-label">分享</span>
+                    <button class="share-btn" type="button" id="copy-link-btn">复制链接</button>
+                    <a class="share-btn" id="share-x" target="_blank" rel="noopener noreferrer">X</a>
+                    <a class="share-btn" id="share-weibo" target="_blank" rel="noopener noreferrer">微博</a>
+                    <span class="share-toast" id="share-toast">已复制</span>
+                </div>
             </div>
-            {% endif %}
             <div class="article-content" id="article-content">
                 {{ content }}
             </div>
         </article>
     </main>
+
+    <a href="#" class="back-to-top" id="back-to-top" aria-label="回到顶部">↑</a>
 
     <script>
         window.addEventListener('scroll', () => {
@@ -504,12 +613,53 @@
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
             document.getElementById('progress-bar').style.width = scrolled + '%';
+
+            const backToTop = document.getElementById('back-to-top');
+            if (winScroll > 500) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
         });
 
         document.addEventListener('DOMContentLoaded', () => {
             const content = document.getElementById('article-content');
             const headings = content.querySelectorAll('h2, h3');
             const tocList = document.getElementById('toc-list');
+            const readingTime = document.getElementById('reading-time');
+            const copyBtn = document.getElementById('copy-link-btn');
+            const shareX = document.getElementById('share-x');
+            const shareWeibo = document.getElementById('share-weibo');
+            const shareToast = document.getElementById('share-toast');
+            const backToTop = document.getElementById('back-to-top');
+
+            const plainText = content.innerText || content.textContent || '';
+            const chineseChars = (plainText.match(/[\u4e00-\u9fff]/g) || []).length;
+            const latinWords = (plainText.replace(/[\u4e00-\u9fff]/g, ' ').match(/[A-Za-z0-9_]+/g) || []).length;
+            const estimatedWords = chineseChars + latinWords;
+            const minutes = Math.max(1, Math.ceil(estimatedWords / 300));
+            readingTime.textContent = `阅读时间约 ${minutes} 分钟`;
+
+            const pageUrl = window.location.href;
+            const pageTitle = document.title;
+            shareX.href = `https://x.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(pageTitle)}`;
+            shareWeibo.href = `https://service.weibo.com/share/share.php?url=${encodeURIComponent(pageUrl)}&title=${encodeURIComponent(pageTitle)}`;
+
+            copyBtn.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(pageUrl);
+                    shareToast.textContent = '已复制';
+                } catch (e) {
+                    shareToast.textContent = '复制失败';
+                }
+                shareToast.classList.add('show');
+                window.setTimeout(() => shareToast.classList.remove('show'), 1200);
+            });
+
+            backToTop.addEventListener('click', (event) => {
+                event.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
             
             if(headings.length === 0) {
                 document.querySelector('.toc-container').style.display = 'none';
