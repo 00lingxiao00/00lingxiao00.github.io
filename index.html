@@ -106,6 +106,8 @@
 
         .col-date, .col-author, .col-title { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 400; }
         .col-date, .col-author { color: rgba(26, 26, 26, 0.45); }
+        .col-author { line-height: 1.45; }
+        .author-inline { color: rgba(26, 26, 26, 0.55); }
         .col-title { color: rgba(26, 26, 26, 0.95); line-height: 1.4; transition: color 0.3s ease; }
 
         @media (max-width: 768px) {
@@ -151,7 +153,18 @@
               {% if post.category == 'translation' %}
               <a href="{{ post.url }}" class="list-row post-item">
                   <div class="col-date">{{ post.date | date: "%Y.%m.%d" }}</div>
-                  <div class="col-author">{{ post.author }}</div>
+                  <div class="col-author">
+                      {% capture author_json %}{{ post.author | jsonify }}{% endcapture %}
+                      {% if author_json contains '[' %}
+                      <span class="author-inline">
+                          {% for author in post.author %}
+                          {{ author }}{% unless forloop.last %} / {% endunless %}
+                          {% endfor %}
+                      </span>
+                      {% else %}
+                      <span class="author-inline">{{ post.author }}</span>
+                      {% endif %}
+                  </div>
                   <div class="col-title">{{ post.title }}</div>
               </a>
               {% endif %}
@@ -169,7 +182,18 @@
               {% if post.category == 'original' %}
               <a href="{{ post.url }}" class="list-row post-item">
                   <div class="col-date">{{ post.date | date: "%Y.%m.%d" }}</div>
-                  <div class="col-author">{{ post.author }}</div>
+                  <div class="col-author">
+                      {% capture author_json %}{{ post.author | jsonify }}{% endcapture %}
+                      {% if author_json contains '[' %}
+                      <span class="author-inline">
+                          {% for author in post.author %}
+                          {{ author }}{% unless forloop.last %} / {% endunless %}
+                          {% endfor %}
+                      </span>
+                      {% else %}
+                      <span class="author-inline">{{ post.author }}</span>
+                      {% endif %}
+                  </div>
                   <div class="col-title">{{ post.title }}</div>
               </a>
               {% endif %}
