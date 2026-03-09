@@ -88,7 +88,6 @@
             margin: 2rem auto 8rem auto;
             padding: 0 5%;
             display: grid;
-            /* 把 280px 放在前面，代表左侧是目录，1fr 代表右侧是自适应的正文 */
             grid-template-columns: 280px 1fr; 
             gap: 4rem;
             align-items: start;
@@ -136,99 +135,84 @@
         }
         .author-name { color: rgba(26,26,26,0.72); }
         .author-separator { color: rgba(26,26,26,0.35); }
+        
+        /* ==================== 
+           文章操作区 (阅读时间、下载、分享) - 高级感重构
+           ==================== */
         .article-actions {
-            margin-top: -1.35rem;
-            margin-bottom: 2.8rem;
+            margin-top: 0;
+            margin-bottom: 3.5rem;
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.55rem;
+            justify-content: space-between;
             align-items: center;
-            padding: 0.82rem 0;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            background: transparent;
-        }
-        .download-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 0.9rem;
-            min-height: 2rem;
-            border: 1px solid rgba(0,0,0,0.18);
-            border-radius: 999px;
-            text-decoration: none;
-            color: rgba(26,26,26,0.82);
-            font-size: 0.76rem;
-            letter-spacing: 0.7px;
-            text-transform: uppercase;
-            transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
-        }
-        .download-link:hover {
-            border-color: rgba(0,0,0,0.35);
-            color: var(--text-main);
-            background: rgba(0,0,0,0.03);
-        }
-        .reading-time {
-            display: inline-flex;
-            align-items: center;
-            padding: 0 0.85rem;
-            min-height: 2rem;
-            border-radius: 999px;
-            font-size: 0.76rem;
-            letter-spacing: 0.45px;
-            color: rgba(26,26,26,0.7);
-            background: rgba(0,0,0,0.035);
-        }
-        .action-divider {
-            width: 1px;
-            height: 1.4rem;
-            background: rgba(0,0,0,0.14);
-            margin: 0 0.15rem 0 0.2rem;
-        }
-        .share-group {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            flex-wrap: wrap;
-            margin-left: auto;
-        }
-        .share-label {
-            font-size: 0.68rem;
-            color: rgba(26,26,26,0.46);
-            margin-right: 0.2rem;
-            letter-spacing: 0.9px;
-            text-transform: uppercase;
-        }
-        .share-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 2.05rem;
-            height: 2rem;
-            padding: 0 0.62rem;
-            border-radius: 999px;
-            border: 1px solid rgba(0,0,0,0.16);
-            text-decoration: none;
-            color: rgba(26,26,26,0.75);
-            font-size: 0.72rem;
-            letter-spacing: 0.35px;
-            transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
-            cursor: pointer;
-            background: transparent;
+            padding: 1.2rem 0;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
             font-family: var(--font-sans);
         }
-        .share-btn:hover {
-            border-color: rgba(0,0,0,0.3);
-            color: var(--text-main);
-            background: rgba(0,0,0,0.03);
+        
+        .actions-left, .actions-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
         }
-        .share-toast {
-            font-size: 0.76rem;
+
+        .reading-time {
+            font-size: 0.85rem;
+            color: rgba(26,26,26,0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .action-dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .download-link, .share-btn {
+            background: transparent;
+            border: none;
+            padding: 0;
+            font-size: 0.85rem;
             color: rgba(26,26,26,0.6);
-            opacity: 0;
-            transition: opacity 0.2s ease;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease;
+            font-family: var(--font-sans);
         }
-        .share-toast.show { opacity: 1; }
+
+        .download-link:hover, .share-btn:hover {
+            color: var(--text-main);
+        }
+
+        .download-link:active, .share-btn:active {
+            transform: scale(0.96);
+        }
+
+        .share-label {
+            font-size: 0.75rem;
+            color: rgba(26,26,26,0.35);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-right: -0.4rem;
+        }
+
+        .share-toast {
+            font-size: 0.8rem;
+            color: #DF8B6E;
+            opacity: 0;
+            transform: translateX(-5px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .share-toast.show { 
+            opacity: 1; 
+            transform: translateX(0);
+        }
+
         .wechat-wrap {
             position: relative;
             display: inline-flex;
@@ -302,7 +286,7 @@
         .article-content p {
             text-align: justify; 
             text-justify: inter-ideograph; 
-            text-indent: 2em; /* 首行缩进两个中文字符 */
+            text-indent: 2em;
             margin-bottom: 1.8rem;
             color: #262626;
             font-size: 1.05rem;
@@ -377,14 +361,13 @@
         }
         .article-content h3 { font-size: 1.3rem; color: var(--text-muted); }
 
-        /* 图片自动化排版魔法 */
         .article-content img {
-            max-width: 100%; /* 无论图片多大，都不会撑爆屏幕 */
-            height: auto; /* 自动保持比例，绝不拉伸变形 */
-            border-radius: 12px; /* 自动切出优雅圆角 */
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
             display: block;
-            margin: 3rem auto; /* 上下留白，自动居中 */
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06); /* 增加极淡的高级阴影 */
+            margin: 3rem auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
 
         .article-content a { color: var(--accent-color); text-decoration: none; border-bottom: 1px solid rgba(124,161,204,0.4); }
@@ -396,7 +379,6 @@
         .toc-container {
             position: sticky;
             top: 4rem; 
-            /* 原来的左边框改到右边框，因为目录现在在左边了 */
             padding-right: 1.5rem;
             border-right: 1px solid rgba(0,0,0,0.08);
             font-size: 0.95rem;
@@ -439,13 +421,12 @@
            学术注释/脚注区专属排版 
            ==================== */
         .footnotes {
-            margin-top: 5rem; /* 与正文拉开极大差距 */
+            margin-top: 5rem;
             padding-top: 3rem;
-            border-top: 2px solid rgba(0,0,0,0.1); /* 坚固的分割线 */
-            font-size: 0.9rem; /* 字体缩小 */
+            border-top: 2px solid rgba(0,0,0,0.1);
+            font-size: 0.9rem;
             color: var(--text-muted);
         }
-        /* 自动在注释区上方插入一个小标题 */
         .footnotes::before {
             content: '注释与参考文献 (Footnotes & References)';
             display: block;
@@ -455,7 +436,6 @@
             color: var(--text-main);
             margin-bottom: 2rem;
         }
-        /* 强制取消注释里的首行缩进，并调整间距 */
         .footnotes p {
             text-indent: 0 !important; 
             margin-bottom: 0.5rem;
@@ -465,7 +445,7 @@
             padding-left: 1.5rem;
         }
         .footnotes li {
-            margin-bottom: 1.2rem; /* 让多条注释之间留出呼吸空间 */
+            margin-bottom: 1.2rem;
             text-align: left;
         }
 
@@ -483,7 +463,6 @@
                 margin-bottom: 2rem;
                 max-height: none;
             }
-            /* 手机上保证标题在最前面，目录在其次 */
             .article-container { order: 1; }
             .toc-container { order: 2; }
         }
@@ -509,32 +488,25 @@
                 margin-bottom: 2rem;
                 font-size: 0.85rem;
             }
+            
+            /* 手机端操作区重构 */
             .article-actions {
-                margin-top: -1rem;
-                margin-bottom: 2rem;
-                padding: 0.65rem 0;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                padding: 1rem 0;
+                margin-top: 0;
+                margin-bottom: 2.5rem;
             }
-            .download-link {
-                min-height: 2rem;
-                font-size: 0.78rem;
-                padding: 0 0.72rem;
-            }
-            .reading-time {
-                min-height: 2rem;
-                font-size: 0.78rem;
-                padding: 0 0.72rem;
-            }
-            .action-divider { display: none; }
-            .share-btn {
-                min-width: 1.8rem;
-                height: 1.8rem;
-                padding: 0 0.55rem;
-                font-size: 0.72rem;
-            }
-            .share-group {
-                margin-left: 0;
+            .actions-right {
                 width: 100%;
+                justify-content: flex-start;
+                gap: 1rem;
             }
+            .share-label {
+                margin-right: 0;
+            }
+
             .article-content p {
                 font-size: 1rem;
                 line-height: 1.85;
@@ -640,24 +612,29 @@
                 {% endif %}
             </div>
             {% endif %}
+            
             {% assign source_filename = page.path | split: '/' | last %}
             {% assign default_download_url = '' %}
             {% if site.github and site.github.repository_nwo and site.github.source and site.github.source.branch %}
                 {% capture default_download_url %}https://github.com/{{ site.github.repository_nwo }}/raw/{{ site.github.source.branch }}/{{ page.path }}{% endcapture %}
             {% endif %}
             {% assign markdown_download_url = page.download_url | default: default_download_url %}
+            
             <div class="article-actions">
-                <span class="reading-time" id="reading-time">阅读时间计算中...</span>
-                {% if markdown_download_url != '' %}
-                <a class="download-link" href="{{ markdown_download_url }}" download="{{ source_filename }}">
-                    下载
-                </a>
-                {% endif %}
-                <span class="action-divider" aria-hidden="true"></span>
-                <div class="share-group">
-                    <span class="share-label">分享</span>
-                    <button class="share-btn" type="button" id="copy-link-btn">复制链接</button>
-                    <a class="share-btn" id="share-x" target="_blank" rel="noopener noreferrer">X</a>
+                <div class="actions-left">
+                    <span class="reading-time" id="reading-time">阅读时间计算中...</span>
+                    {% if markdown_download_url != '' %}
+                    <span class="action-dot"></span>
+                    <a class="download-link" href="{{ markdown_download_url }}" download="{{ source_filename }}">
+                        下载文章
+                    </a>
+                    {% endif %}
+                </div>
+                
+                <div class="actions-right">
+                    <span class="share-label">分享至</span>
+                    <button class="share-btn" type="button" id="copy-link-btn">链接</button>
+                    <a class="share-btn" id="share-x" target="_blank" rel="noopener noreferrer">推特/X</a>
                     <span class="wechat-wrap">
                         <button class="share-btn" type="button" id="wechat-btn">微信</button>
                         <span class="wechat-popover" id="wechat-popover">
@@ -668,6 +645,7 @@
                     <span class="share-toast" id="share-toast">已复制</span>
                 </div>
             </div>
+            
             <div class="article-content" id="article-content">
                 {{ content }}
             </div>
@@ -747,7 +725,6 @@
             
             if(headings.length === 0) {
                 document.querySelector('.toc-container').style.display = 'none';
-                /* 魔法：如果没有目录，就把网格变成单列，并让文章完美居中 */
                 document.querySelector('.page-wrapper').style.gridTemplateColumns = '1fr';
                 document.querySelector('.article-container').style.margin = '0 auto';
                 return;
