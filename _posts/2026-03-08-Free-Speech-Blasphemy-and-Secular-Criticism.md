@@ -6,6 +6,8 @@ category: translation
 permalink: /Free-Speech-Blasphemy-and-Secular-Criticism/
 ---
 
+![Talal Asad](/assets/images/Professor-Talal-Asad.jpg)
+
 多年以来，欧美地区一直充斥着关于言论自由受到威胁的讨论，尤其是每当该地区的穆斯林针对某些对伊斯兰教的公开批评而提出”亵渎”（blasphemy）问题时。最近一次危机是丹麦漫画丑闻。[^1] 在拉什迪事件（Rushdie affair）过去十五年之后，这种古老的对”亵渎神明”的宗教谴责，似乎再次在欧洲及其他地区的穆斯林群体中抬头，试图破坏来之不易的世俗自由。至少我们被告知的情况是这样的。一方面是愤怒的抗议与部分暴力行为，另一方面则是许多对原则的重申与愤怒的表达。[^2] 人们主要在将穆斯林移民融入欧洲社会的问题背景下讨论这一事件，并探讨其与伊斯兰主义者这一”全球威胁”的关联。[^3] 在世贸中心遇袭与伦敦爆炸案发生之后，这场漫画丑闻被与一个更广泛的话语联系在了一起：西方的”反恐战争”——许多人将其视为伊斯兰与欧洲这两大文明之间内在敌意的一部分。因此，丹麦新闻界与许多丹麦政治家开始批评伊斯兰研究学者，指责他们无视这种根本性的对抗。有人认为，这些学者故意回避了某些文明议题，例如伊斯兰教在哪些方面不仅是融合的障碍，更构成了潜在的安全威胁。[^4]
 
 穆斯林与非穆斯林在漫画事件中所展现出的态度相当引人注目。然而，本文既非为这些态度辩护，亦非对之进行批判；本文试图思考的是亵渎神明——一个宗教概念——在世俗自由社会中的位置。在下文中，我希望从不同角度思考“亵渎”这一概念，并将其视为自由欧洲某些道德与政治问题的结晶。因此，相较于探讨伊斯兰思想与行为传统，我将更多地讨论我们共同栖居的现代世俗境况。
@@ -166,107 +168,106 @@ permalink: /Free-Speech-Blasphemy-and-Secular-Criticism/
 
 这个问题并非意在作道德谴责，而是作为一个邀请，邀请人们再次审视现代性的一个经验特征，尤其是世俗批评的观念。本文早期版本曾以《关于亵渎与世俗批评的沉思》（Reflections on Blasphemy and Secular Criticism）为题，收录于亨特·德·弗里斯（Hent de Vries）主编的《宗教：超越一个概念》（Religion: Beyond a Concept, New York, 2007）。
 
-
 [^1]: 2005 年 9 月 30 日，丹麦报纸《日德兰邮报》（*Jyllands-Posten*）发表了多幅描绘先知穆罕默德的漫画，许多穆斯林认为此举是对先知的侮辱。结果在欧洲及其他地区引发了广泛的抗议和争议。
-
+    
 [^2]: 西方新闻界大肆渲染穆斯林回应发表漫画时的非理性暴力，却很少注意到穆斯林在整个欧洲尤其是丹麦生活的政治氛围。据丹麦一位研究人员称，在 2001 年的选举中，来自丹麦各个政党的受人尊敬的议会议员向国家媒体发表了以下声明：“穆斯林只是在等待合适的时机来杀我们”（莫恩斯·坎姆雷，进步党）；“某些人仅仅因为他们的宗教信仰就构成了安全威胁，这意味着必须将他们关进拘留营”（因格·达尔·索伦森，自由党）；“如果你试图通过立法手段摆脱这些（关于穆斯林组织的）问题，这违反了一条历史规律，那就是如果你堵住了旧洞，老鼠总会找到新洞”（保罗·尼鲁普·拉斯穆森，社会民主党）。引自 P. 赫尔维克（P. Hervik）的《丹麦新民族主义的出现，1992-2001》（The Emergence of Neo-Nationalism in Denmark, 1992–2001），载《欧洲及更远地区的新民族主义：社会人类学的视角》（*Neo-Nationalism in Europe and Beyond: Perspectives from Social Anthropology*），马库斯·班克斯（Marcus Banks）与安德烈·金里奇（Andre Gingrich）主编（牛津，2006）。
-
+    
 [^3]: 《纽约客》撰稿人乔治·帕克（George Packer）写道：“针对丹麦漫画旷日持久的暴力示威，是伊斯兰主义者一场经过策划的企图，旨在恐吓他们在自己国家以及西方的敌人。”；《反抗信仰：自由国际主义还能被拯救吗？》（Fighting Faiths: Can liberal internationalism be saved?），《纽约客》，2006 年 7 月 10 日和 17 日，第 95-96 页。
-
+    
 [^4]: “例如，丹麦新闻界的一部分以及丹麦政界人士最近认为，伊斯兰研究学者表现得像是政治代理人，因为他们故意选择忽视某些议题，例如在这个社会过程中，伊斯兰教被视为融入的障碍和/或潜在的安全威胁。”摘自哥本哈根大学由丹麦研究网络“伊斯兰研究论坛（FIFO）”主办的研讨会“重新定位伊斯兰研究”的主题声明，2007 年 5 月 14-15 日。然而，根据 2007 年欧洲刑警组织发布的第一份关于恐怖主义的报告，似乎在 2006 年欧盟发生的 498 起恐怖主义行为中，伊斯兰主义者仅对其中一起负责。绝大多数是由巴斯克分离主义者实施的，而只有一起巴斯克袭击导致了人员伤亡。但是，因涉嫌恐怖主义被捕的人中有一半以上是穆斯林。欧洲几乎所有媒体在渲染“伊斯兰威胁”的同时，都忽视了这些数字。人们不禁要问，如何解释这种奇特的欲言又止的沉默？
-
+    
 [^5]: 教皇圣座演讲《信仰、理性与大学：回忆与反思》（Faith, Reason, and the University: Memories and Reflections），2006 年 9 月，德国雷根斯堡大学：http://www.vatican.va/holy_father/benedict_xvi/speeches/2006/september/documents/hf_ben-xvi_spe_20060912_university-regensburg_en.html。相比之下，著名天主教哲学家查尔斯·泰勒（Charles Taylor）则谈到“基督教与希腊哲学之间无法逾越的鸿沟”。参见他《世俗时代》（*The Secular Age*）（马萨诸塞州剑桥，2007）一书的导言。
-
+    
 [^6]: 弗朗西斯·福山（Francis Fukuyama），《历史的终结与最后的人》（*The End of History and the Last Man*），再版后记（纽约，2006）。另见一位无宗教信仰的美国后现代哲学家与一位意大利基督教后现代神学家之间的对话，双方都同意基督教与民主之间的基本联系：理查德·罗蒂（Richard Rorty）与吉亚尼·瓦蒂莫（Gianni Vattimo），《宗教的未来》（*The Future of Religion*），圣地亚哥·扎巴拉（Santiago Zabala）主编（纽约，2005）。
-
+    
 [^7]: 乔治·格罗特（George Grote），《希腊史》（*History of Greece*）（伦敦，2001）。
-
+    
 [^8]: 马塞尔·戈谢（Marcel Gauchet），《世界的祛魅：一段宗教政治史》（*The Disenchantment of the World: A Political History of Religion*），查尔斯·泰勒（Charles Taylor）作序（普林斯顿，1997）。
-
+    
 [^9]: 见圣地亚哥·扎巴拉（Santiago Zabala）介绍罗蒂和瓦蒂莫《宗教的未来》的论文《一种没有有神论者或无神论者的宗教》（A Religion Without Theists or Atheists），第 2 页。
-
+    
 [^10]: 中东当然不等同于“伊斯兰世界”——甚至不等同于“穆斯林占多数的国家”，因为大多数穆斯林居住在中东之外。然而，在西方的想象中，中东的穆斯林国家被视为“伊斯兰的中心地带”，这就像“基督教”通常被用来指代拉丁基督教，而不指代穆斯林占多数国家中重要（且持续存在）的基督教团体一样。
-
+    
 [^11]: 见约翰·斯图尔特·密尔（John Stuart Mill）的《代议制政府》（*Representative Government*），特别是第 8 章（1861），载《三论》（*Three Essays*）（伦敦，1973）。
-
+    
 [^12]: 扎巴拉（Zabala），《一种没有有神论者或无神论者的宗教》（A Religion Without Theists or Atheists），第 6 页。
-
+    
 [^13]: 罗蒂（Rorty）与瓦蒂莫（Vattimo），《宗教的未来》（*Future of Religion*），第 72 页。
-
+    
 [^14]: R. 阿尔塔·查罗 (R. Alta Charo, J.D.)，《研究的对象——人体组织的所有权与使用》（Body of Research—Ownership and Use of Human Tissue），《新英格兰医学杂志》（*New England Journal of Medicine*）第 355 期（2006 年 10 月 12 日）。
-
+    
 [^15]: K. J. 多佛 (K. J. Dover)，《古典希腊对性行为的态度》（Classical Greek Attitudes to Sexual Behaviour），载马克·高尔登（Mark Golden）与彼得·图希（Peter Toohey）主编《古希腊与古罗马的性与差异》（*Sex and Difference in Ancient Greece and Rome*）（爱丁堡，2003），第 117-118 页。
-
+    
 [^16]: 马克·罗斯（Mark Rose），《作为所有者的作者：唐纳森诉贝克特案与现代作者身份的谱系》（The Author as Proprietor: *Donaldson v. Becket* and the Genealogy of Modern Authorship），《表象》（*Representations*）第 23 期（1988 年夏季刊）。
-
+    
 [^17]: 见玛莎·伍德曼西（Martha Woodmansee），《天才与版权：‘作者’出现的经济与法律条件》（The Genius and the Copyright: Economic and Legal Conditions of the Emergence of the ‘Author’），《十八世纪研究》（*Eighteenth-Century Studies*）第 17 卷，第 4 期（1984）。
-
+    
 [^18]: 阿兰·卡邦图斯（Alain Cabantous），《亵渎：17至19世纪西方的不虔敬言论》（*Blasphemy: Impious Speech in the West from the Seventeenth to the Nineteenth Century*）（纽约，2002），第 5 页。
-
+    
 [^19]: 亨特·德·弗里斯（Hent de Vries）在其出色著作《宗教与暴力》（*Religion and Violence*）（巴尔的摩，2002）中，借鉴德里达和本雅明，恰恰提出了这一论点。
-
+    
 [^20]: W. C. 范翁尼克（W. C. Van Unnik），《新约中基督徒的言论自由》（The Christian’s Freedom of Speech in the New Testament），《约翰·赖兰兹图书馆公报》（*Bulletin of the John Rylands Library*）第 44 期（1962）：第 487 页。
-
+    
 [^21]: 见约斯·马什（Joss Marsh），《语言犯罪：十九世纪英国的亵渎、文化与文学》（*Word Crimes: Blasphemy, Culture, and Literature in Nineteenth-Century England*）（芝加哥，1998）。马什处理了两百多起亵渎神明审判，所有这些审判都带有强烈的阶级色彩。
-
+    
 [^22]: 见爱德华·威廉·莱恩（Edward William Lane）的《阿拉伯-英语词典》（*Arabic-English Lexicon*）（伦敦，1863）。另见 A. 德·比伯斯坦·卡兹米尔斯基（A. de Biberstein Kazimirski）的《阿拉伯-法语词典》（*Dictionnaire Arabe-Français*）（开罗，1875），其释义为“Blasphémer Dieu, et faire nargue de ses bienfaits”（亵渎上帝，嘲弄其恩典）。
-
+    
 [^23]: 在这方面，它与 *shatima*, *sabb*, *istihāna* 等词有重叠。
-
+    
 [^24]: 《关于发表侮辱先知图像的声明》（*Bayān al-ittihād hawl nashr suwar masi'a li-rrasūl*），开罗，2006 年 1 月 23 日：www.qaradawi.net/site/topics/article.asp?cu_no=4143&version=1&template_id=116&parent_id=114。
-
+    
 [^25]: 导致纳斯尔·哈米德·阿布·扎伊德（Nasr Hamid Abu Zayd）被宣布为叛教者（从而在法律上不再与其妻子维持婚姻关系）的书是《理解文本：古兰经科学研究》（*Majhūm al-nass: Dirāṣah fiʿulūm al-Qur'ān*）（贝鲁特，1990）。关于阿布·扎伊德的方法论有两篇值得注意的有趣文章：查尔斯·赫希金德（Charles Hirschkind）的《异端还是诠释学：纳斯尔·哈米德·阿布·扎伊德案》（Heresy or Hermeneutics: The Case of Nasr Hamid Abu Zayd），《斯坦福人文学报》（*Stanford Humanities Review*）第 5 卷第 1 期（1996）；以及萨巴·马哈茂德（Saba Mahmood）的《世俗主义、诠释学与帝国：伊斯兰改革的政治》（Secularism, Hermeneutics, and Empire: The Politics of Islamic Reformation），《公共文化》（*Public Culture*）第 18 卷第 2 期（2006）。马哈茂德论述了阿布·扎伊德等自由派伊斯兰改革者。
-
+    
 [^26]: 基利安·巴尔茨（Kilian Bälz）在《通过家庭审判将信仰置于司法审查之下：‘阿布·扎伊德案’》（Submitting Faith to Judicial Scrutiny Through the Family Trial: The 'Abu Zayd Case'），《伊斯兰世界》（*Die Welt des Islams*），新系列第 37 卷第 2 期（1997）中对该案件进行了详细描述。胡赛因·阿格拉马（Hussein Agrama）的博士论文《现代埃及的法院与教令委员会：伊斯兰法律实践的民族志》（*Law Courts and Fatwa Councils in Modern Egypt: An Ethnography of Islamic Legal Practice*，约翰·霍普金斯大学，2005）的第 1 章（“在纳斯尔·阿布·扎伊德案中 *Hisba* 的合法化”）提供了更有趣的说明。《埃及/阿拉伯世界》（*Egypte/Monde Arabe*）第 34 期（1998）给出了初审法院、上诉法院和最高法院判决的大量摘录（法文翻译本）。阿拉伯文判决原文包含在穆罕默德·萨利姆·阿瓦（Muhammad Salim al-'Awwa）的《言论自由权》（*al-haq fi al-ta'bir*）（开罗，1998）中。
-
+    
 [^27]: 阿瓦（Al-‘Awwa），《言论自由权》（*al-haqfi al-ta‘bir*），第 23 页。另见艾哈迈德·拉沙德·塔胡恩（Ahmad Rashad Tahun）的《伊斯兰教法中的信仰自由》（*Hurriyat al-‘ağıda fi-shsharı‘a al-islâmiyya*）（开罗，1998），他比阿瓦更关注政治问题——特别是穆斯林公社（*umma*）的团结。
-
+    
 [^28]: 在最近的一篇文章中，巴伯·约翰森（Baber Johansen）追溯了伊本·泰米叶（Ibn Taymiyya）关于胁迫供述问题的立场。约翰森观察到，“在罗马法和欧洲中世纪晚期的司法实践中，对证人的拷问发挥了重要作用，但在穆斯林的法律教义中却是未知的。”但是，伊本·泰米叶对法律的作用采取了一种非同寻常的政治视角，他因此主张法律上承认被胁迫证据的可采性。见《作为证据的符号：伊本·泰米叶（1263-1328）与伊本·卡伊姆·贾瓦齐亚（逝于1351）的证据论》（Signs as Evidence: The Doctrine of Ibn Taymiyya (1263–1328) and Ibn Qayyim Al-Jawziyya (D. 1351) on Proof），《伊斯兰法律与社会》（*Islamic Law and Society*）第 9 卷第 2 期（2002）：引文见第 171 页。
-
+    
 [^29]: 在《什么是启蒙运动》（*What Is Enlightenment*）一文中，当康德谈到“公共”和“私人”理性时，他做出了一个似乎类似的区分。然而，后者依赖于国家的概念，并在其中中国家划定了一个进行公共辩论的舞台。阿瓦没有提出这样的论点。他的关注点纯粹是个人信仰作为一种内在状况的可再现性（representability）。
-
+    
 [^30]: “应当注意，根据定义（1），亵渎被规定为言辞，因为它通常以口语表达，尽管它也可以在思想或行动中发生。作为首要的口舌之罪，它显然直接对立于赞美上帝的宗教行为。（2）据说它是反对上帝的，尽管这可能只是间接的，比如当对圣徒或神圣事物说出侮辱性言语时，因为他们与上帝及其侍奉维持着关系”；《天主教百科全书》（*The Catholic Encyclopedia*）（纽约，1907），第 2 卷，第 595 页。
-
+    
 [^31]: 阿瓦（Al-‘Awwa），《言论自由权》（*al-haqfi al-ta‘bir*），第 13 页。
-
+    
 [^32]: 谢赫·奥斯曼·萨菲（Al-Shaykh ‘Uthman Safi），《<宗教思想批判>注》（*‘Ala Hāmish “Naqd al-fikr ad-dīnī”*）（贝鲁特，1970），第 87 页。
-
+    
 [^33]: 巴尔茨（Bälz），《将信仰置于审查之下》（Submitting Faith），第 143 页。
-
+    
 [^34]: 约翰森（Johansen），《作为证据的符号》（Signs as Evidence）。
-
+    
 [^35]: 参见温妮弗雷德·法勒斯·沙利文（Winnifred Fallers Sullivan）出色的民族志研究，《宗教自由的不可能性》（*The Impossibility of Religious Freedom*）（普林斯顿，2005）。
-
+    
 [^36]: 同上（Ibid.），第 12-13 页。
-
+    
 [^37]: 这与英语及其他欧洲语言中“belief”一词的前现代含义并无不同。关于该词有趣的词源学，见威尔弗雷德·坎特威尔·史密斯（Wilfred Cantwell Smith）的《信仰与信念》（*Faith and Belief*）（牛津，1998）第 6 章。
-
+    
 [^38]: 现代伊斯兰历史中对确定叛教的标准，以及是否应予以惩罚、如果惩罚应如何惩罚的问题，一直存在相当大的分歧。例如，布哈里（Bukhari）收集的中世纪圣训集之一，记录了先知穆罕默德的一句格言，即必须处死叛教者；但另一部经典的圣训集（穆斯林所编纂的圣训集）宣布这一声明是不真实的。这场辩论在现代仍在继续。
-
+    
 [^39]: 见多萝西娅·韦尔特克（Dorothea Weltecke）在《缺乏信仰：中世纪中期与晚期》（Beyond Religion: On the Lack of Belief During the Central and Late Middle Ages）中的敏锐分析，载《宗教及其它者：互动中的世俗与神圣概念和实践》（*Religion and Its Other: Secular and Sacral Concepts and Practices in Interaction*），约尔格·福伊希特（Jörg Feuchter）、米奇·克内希特（Michi Knecht）与海克·博克（Heike Bock）主编（芝加哥，2008）。
-
+    
 [^40]: 一个典型的句子是：*wa-l-fitnatu ashaddu min al-qatli*（2:191），“迫害（迷惑）比杀戮更严重”。
-
+    
 [^41]: 苏珊·门德斯（Susan Mendus），《宽容与自由主义的限度》（*Tolerance and the Limits of Liberalism*）（大西洋高地，新泽西州，1989）。
-
+    
 [^42]: “这就是我的立场：我别无选择（Here I stand: I can do no other），”据传是路德（Luther）的话，也许从未被说出口，尽管它们很好地表达了他在沃尔姆斯议会上实际声明的情感。见 O. 查德威克（O. Chadwick），《宗教改革》（*The Reformation*）（哈蒙兹沃斯，1972），第 56 页。无论如何，他在那个著名场合所说的话必须被描述为真诚但非本真的。然而，这似乎并不对。
-
+    
 [^43]: 爱德华·萨义德（Edward Said），《世界、文本与批评家》（*The World, the Text, and the Critic*）（波士顿，1983），第 26 页。
-
+    
 [^44]: 米歇尔·福柯（Michel Foucault），《什么是批判》（What Is Critique），凯文·保罗·盖曼（Kevin Paul Geiman）译，载詹姆斯·施密特（James Schmidt）主编，《什么是启蒙？十八世纪的回答与二十世纪的问题》（*What Is Enlightenment? Eighteenth-Century Answers and Twentieth-Century Questions*）（伯克利，1996）。
-
+    
 [^45]: 见莱因哈特·科泽雷克（Reinhart Koselleck），《危机与批判》（*Crisis and Critique*）（剑桥，马萨诸塞州，1988），第 103 页注释 15。我的同事约翰·华莱士（John Wallach）告诉我：“这个动词是 *krino*，它可以表示‘分离、辨别、判断’。相关的名词是 *crisis*（危机：生命与死亡之间的潜在转折点）和 *criterion*（标准：即用于判断的手段），也是‘法官’的称谓。法庭被称为 *Dikasteriai*，即下达司法判决的地方。希腊陪审团中的法官被称为 *dikastai*。希腊正义女神是 *Dike*。*Dike* 派生自动词 *dikazo*，意为‘判断、决定、确立为刑罚或判决’。有人将其与动词 *deiknumi* 联系起来，该词意为‘展示、显明、证明’等。没有哪个动词等同于说英语的人最近把名词动词化造出来的那个词，即‘critique（批判）’。”（个人交流）。关于该词汇历史的有用说明，可参见由奥托·布伦纳（Otto Brunner）、维尔纳·孔策（Werner Conze）和莱因哈特·科泽雷克主编的《基本概念历史辞典》（*Geschichtliche Grundbegriffe*）（斯图加特，1972-）中的“Krisis”和“Kritik”词条。
-
+    
 [^46]: 见米歇尔·福柯，《无畏的言说》（*Fearless Speech*）（洛杉矶，2001），第 119-33 页。
-
+    
 [^47]: 见理查德·波普金（Richard Popkin），《怀疑主义的历史》（*The History of Skepticism*），修订和扩充版（纽约，2003），特别是第 18 章。
-
+    
 [^48]: 史蒂文·夏平（Steven Shapin），《真理的社会史：十七世纪英国的文明与科学》（*A Social History of Truth: Civility and Science in Seventeenth-Century England*）（芝加哥，1994）。
-
+    
 [^49]: 然而，后来共产党接受了自我批评（auto-critique）的实践。在文学中我所知道的最动人的例子是阿瑟·柯斯勒（Arthur Koestler）的《正午的黑暗》（*Darkness at Noon*），达芙妮·哈代（Daphne Hardy）译（伦敦，1940）。
-
+    
 [^50]: 卡尔·波普尔（Karl Popper）的《科学发现的逻辑》（*Logic of Scientific Discovery*）（伦敦，1959）是他证伪理论的著名论述。他的《历史决定论的贫困》（*The Poverty of Historicism*）（伦敦，1957）是针对马克思主义历史决定论科学主张的一部有影响力的批判著作。
-
+    
 [^51]: 见脚注 5。
-
+    
 [^52]: 就在漫画发表前仅仅两周，丹麦报纸《政治报》（*Politiken*）发表了一篇题为“一种对批评伊斯兰教深切恐惧感”的文章，该文表明欧洲的白人多数群体对穆斯林少数群体的存在感到四面楚歌。见兰德尔·汉森（Randall Hansen），《丹麦漫画争议：对自由主义自由的辩护》（The Danish Cartoon Controversy: A Defence of Liberal Freedom），《国际移民》（*International Migration*）第 44 卷第 5 期（2006）：第 8 页。
