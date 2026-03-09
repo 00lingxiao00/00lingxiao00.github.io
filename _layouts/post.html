@@ -61,6 +61,19 @@
             transition: opacity 0.2s;
         }
         .logo:hover { opacity: 0.6; }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(26, 26, 26, 0.5);
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: #DF8B6E; }
 
         /* ==================== 
            布局更改：左侧目录，右侧正文 
@@ -96,6 +109,28 @@
             margin-top: 1.5rem;
             border-radius: 2px;
         }
+        .article-meta {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: rgba(26,26,26,0.45);
+            margin-top: -1.5rem;
+            margin-bottom: 3.5rem;
+            letter-spacing: 0.5px;
+            line-height: 1.7;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            align-items: baseline;
+        }
+        .meta-label { color: rgba(26,26,26,0.45); }
+        .author-list {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            align-items: baseline;
+        }
+        .author-name { color: rgba(26,26,26,0.72); }
+        .author-separator { color: rgba(26,26,26,0.35); }
 
         /* ==================== 
            核心排版区 
@@ -108,6 +143,46 @@
             color: #262626;
             font-size: 1.05rem;
             line-height: 1.9; 
+            overflow-wrap: anywhere;
+        }
+        .article-content ul,
+        .article-content ol {
+            margin: 0 0 1.8rem;
+            padding-left: 1.5rem;
+            color: #262626;
+            line-height: 1.9;
+        }
+        .article-content li { margin-bottom: 0.6rem; }
+        .article-content pre {
+            background: #EBE8E0;
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .article-content code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.92em;
+        }
+        .article-content :not(pre) > code {
+            background: rgba(0,0,0,0.06);
+            padding: 0.1rem 0.35rem;
+            border-radius: 4px;
+        }
+        .article-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            display: block;
+            overflow-x: auto;
+        }
+        .article-content th,
+        .article-content td {
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 0.65rem 0.8rem;
+            text-align: left;
         }
 
         .article-content blockquote {
@@ -232,6 +307,7 @@
 
         /* 响应式：在手机和 iPad 竖屏上 */
         @media (max-width: 992px) {
+            .navbar { padding: 1.25rem 5%; }
             .page-wrapper { grid-template-columns: 1fr; gap: 2rem; }
             .toc-container {
                 position: static;
@@ -247,6 +323,91 @@
             .article-container { order: 1; }
             .toc-container { order: 2; }
         }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 0.95rem;
+                letter-spacing: 0.4px;
+            }
+            .nav-links { gap: 1rem; }
+            .nav-links a { font-size: 0.8rem; }
+            .page-wrapper {
+                margin: 1rem auto 5rem;
+                padding: 0 1.1rem;
+                gap: 1.4rem;
+            }
+            .article-title {
+                font-size: clamp(1.8rem, 7vw, 2.3rem);
+                margin-bottom: 2rem;
+            }
+            .article-meta {
+                margin-top: -0.8rem;
+                margin-bottom: 2rem;
+                font-size: 0.85rem;
+            }
+            .article-content p {
+                font-size: 1rem;
+                line-height: 1.85;
+                text-align: left;
+                text-indent: 0;
+                margin-bottom: 1.35rem;
+            }
+            .article-content h2,
+            .article-content h3 {
+                margin-top: 2.4rem;
+                margin-bottom: 1rem;
+                line-height: 1.35;
+            }
+            .article-content h2 {
+                font-size: 1.4rem;
+                padding-bottom: 0.55rem;
+            }
+            .article-content h3 { font-size: 1.15rem; }
+            .article-content blockquote {
+                padding: 0.9rem 1rem;
+                margin: 1.8rem 0;
+            }
+            .article-content img {
+                margin: 2rem auto;
+                border-radius: 10px;
+            }
+            .toc-container {
+                padding: 1rem;
+                margin-bottom: 1.2rem;
+            }
+            .footnotes {
+                margin-top: 3rem;
+                padding-top: 1.8rem;
+                font-size: 0.88rem;
+            }
+            .footnotes::before {
+                font-size: 1.05rem;
+                margin-bottom: 1.2rem;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .navbar {
+                padding: 1rem 1.1rem;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            .nav-links {
+                gap: 0.8rem;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+            .article-content p,
+            .article-content ul,
+            .article-content ol {
+                font-size: 0.98rem;
+                line-height: 1.8;
+            }
+            .article-content pre {
+                padding: 0.8rem 0.9rem;
+                font-size: 0.88rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -254,9 +415,9 @@
 
     <nav class="navbar">
         <a href="/" class="logo">The Slyness of the Sine Wave</a>
-        <div class="nav-links" style="display: flex; gap: 2.5rem; align-items: center;">
-            <a href="/" style="text-decoration: none; color: rgba(26, 26, 26, 0.5); font-size: 0.85rem; letter-spacing: 0.5px; transition: color 0.3s ease;">Translations</a>
-            <a href="/about/" style="text-decoration: none; color: rgba(26, 26, 26, 0.5); font-size: 0.85rem; letter-spacing: 0.5px; transition: color 0.3s ease;" onmouseover="this.style.color='#DF8B6E'" onmouseout="this.style.color='rgba(26, 26, 26, 0.5)'">About</a>
+        <div class="nav-links">
+            <a href="/">Translations</a>
+            <a href="/about/">About</a>
         </div>
     </nav>
 
@@ -269,8 +430,18 @@
         <article class="article-container">
             <h1 class="article-title">{{ page.title }}</h1>
             {% if page.author %}
-            <div style="font-family: var(--font-sans); font-size: 0.9rem; color: rgba(26,26,26,0.45); margin-top: -1.5rem; margin-bottom: 3.5rem; letter-spacing: 0.5px;">
-                By {{ page.author }}
+            <div class="article-meta">
+                <span class="meta-label">By</span>
+                {% capture author_json %}{{ page.author | jsonify }}{% endcapture %}
+                {% if author_json contains '[' %}
+                <span class="author-list">
+                    {% for author in page.author %}
+                    <span class="author-name">{{ author }}</span>{% unless forloop.last %}<span class="author-separator">/</span>{% endunless %}
+                    {% endfor %}
+                </span>
+                {% else %}
+                <span class="author-name">{{ page.author }}</span>
+                {% endif %}
             </div>
             {% endif %}
             <div class="article-content" id="article-content">
