@@ -85,7 +85,7 @@
         }
 
         /* 列表区域与分类标题 */
-        .list-section { position: relative; z-index: 2; padding: 0 5% 10rem 5%; max-width: 1000px; margin: 0 auto; }
+        .list-section { position: relative; z-index: 2; padding: 0 5% 6rem 5%; max-width: 1000px; margin: 0 auto; }
         
         .section-title {
             font-family: var(--font-serif); font-size: 1.6rem; font-weight: 500;
@@ -95,7 +95,6 @@
 
         .list-container { border-top: 1.5px solid var(--border-dark); margin-bottom: 6rem; }
 
-        /* 把原来的 Category 换成了 Author，更符合你的需求 */
         .list-header {
             display: grid; grid-template-columns: 120px 180px 1fr; padding: 1rem 0;
             border-bottom: 1px solid var(--border-light); font-size: 0.85rem; font-weight: 400;
@@ -136,11 +135,43 @@
 
         .col-title { color: rgba(26, 26, 26, 0.95); line-height: 1.4; transition: color 0.3s ease; }
 
+        /* 页脚区域（诗与版权声明） */
+        .site-footer {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 5% 8rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--border-light);
+        }
+        .footer-poem {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            color: rgba(26, 26, 26, 0.75);
+            line-height: 2.2;
+            margin-bottom: 3.5rem;
+            letter-spacing: 1px;
+        }
+        .footer-disclaimer {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: rgba(26, 26, 26, 0.35);
+            letter-spacing: 0.5px;
+            line-height: 1.8;
+        }
+        .footer-disclaimer span {
+            margin: 0 6px;
+            opacity: 0.5;
+        }
+
         @media (max-width: 768px) {
             .list-header { display: none; }
             .list-row { grid-template-columns: 1fr; gap: 0.3rem; padding: 1.2rem 0; }
             .search-input { width: 80px; }
             .search-input:focus { width: 120px; }
+            .site-footer { padding: 2rem 5% 5rem 5%; }
+            .footer-poem { font-size: 1.05rem; }
         }
     </style>
 </head>
@@ -242,6 +273,17 @@
             {% endif %}
         </div>
     </section>
+
+    <footer class="site-footer">
+        <div class="footer-poem">
+            季节，要那暴雨的。<br>
+            生活，要那明晰的。<br>
+            死亡，要那快速的。
+        </div>
+        <div class="footer-disclaimer">
+            本站译文由 AI 完成 <span>/</span> 原文均来源于互联网 <span>/</span> 若有版权异议，欢迎联系处理
+        </div>
+    </footer>
 
     <script>
         // 滚动变色
